@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Barn {
     private String fornavn;
     private String efternavn;
-    private int cprnummer;
+    private String cprnummer;
 
     public String getFornavn() {
         return fornavn;
@@ -21,24 +21,28 @@ public class Barn {
         this.efternavn = efternavn;
     }
 
-    public int getCprnummer() {
+    public String getCprnummer() {
         return cprnummer;
     }
 
-    public void setCprnummer(int cprnummer) {
+    public String toString() {
+        return "Fornavn: " + fornavn + "\nEfternavn: " + efternavn + "\nCPR-nummer: " + cprnummer;
+    }
+
+    public void setCprnummer(String cprnummer) {
         this.cprnummer = cprnummer;
     }
 
-    public Barn(String fornavn, String efternavn, int cprnummer) {
+    public Barn(String fornavn, String efternavn, String cprnummer) {
         this.fornavn = fornavn;
         this.efternavn = efternavn;
         this.cprnummer = cprnummer;
     }
 
-    public Barn opretNytBarn(){
+    public static Barn opretNytBarn(){
         String fornavn;
         String efternavn;
-        int cprnummer;
+        String cprnummer;
         Scanner input = new Scanner(System.in);
 
         System.out.println("Hvad er barnets fornavn?");
@@ -48,7 +52,7 @@ public class Barn {
         efternavn = input.next();
 
         System.out.println("Hvad er barnets CPR nummer? Skriv uden mellemrum eller tegn");
-        cprnummer = input.nextInt();
+        cprnummer = input.next();
 
         return new Barn(fornavn, efternavn, cprnummer);
     }

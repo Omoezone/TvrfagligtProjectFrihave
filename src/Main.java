@@ -4,6 +4,6 @@ public class Main {
         //TRALALALALA
         // - Lukas
 
-        // HEJ - We
+        // HEJ - Wel
     }
 }

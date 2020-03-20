@@ -3,12 +3,14 @@ public class Kontaktperson {
     private String efternavn;
     private String telefon;
     private String email;
+    private String addresse;
 
-    public Kontaktperson(String fornavn, String efternavn, String telefon, String email) {
+    public Kontaktperson(String fornavn, String efternavn, String telefon, String email, String addresse) {
         this.fornavn = fornavn;
         this.efternavn = efternavn;
         this.telefon = telefon;
         this.email = email;
+        this.addresse = addresse;
     }
 
     public String getFornavn() {
@@ -41,5 +43,13 @@ public class Kontaktperson {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAddresse() {
+        return addresse;
+    }
+
+    public void setAddresse(String addresse) {
+        this.addresse = addresse;
     }
 }

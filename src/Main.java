@@ -1,3 +1,5 @@
 public class Main {
-    // sj
+    public static void main(String[] args) {
+        //Daniel
+    }
 }

@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Barn {
     private String fornavn;
     private String efternavn;
-    private int cprnummer;
+    private String cprnummer;
 
     public String getFornavn() {
         return fornavn;
@@ -21,24 +21,28 @@ public class Barn {
         this.efternavn = efternavn;
     }
 
-    public int getCprnummer() {
+    public String getCprnummer() {
         return cprnummer;
     }
 
-    public void setCprnummer(int cprnummer) {
+    public String toString() {
+        return "Fornavn: " + fornavn + "\nEfternavn: " + efternavn + "\nCPR-nummer: " + cprnummer;
+    }
+
+    public void setCprnummer(String cprnummer) {
         this.cprnummer = cprnummer;
     }
 
-    public Barn(String fornavn, String efternavn, int cprnummer) {
+    public Barn(String fornavn, String efternavn, String cprnummer) {
         this.fornavn = fornavn;
         this.efternavn = efternavn;
         this.cprnummer = cprnummer;
     }
 
-    public Barn opretNytBarn(){
+    public static Barn opretNytBarn(){
         String fornavn;
         String efternavn;
-        int cprnummer;
+        String cprnummer;
         Scanner input = new Scanner(System.in);
 
         System.out.println("Hvad er barnets fornavn?");
@@ -48,8 +52,58 @@ public class Barn {
         efternavn = input.next();
 
         System.out.println("Hvad er barnets CPR nummer? Skriv uden mellemrum eller tegn");
-        cprnummer = input.nextInt();
+        cprnummer = input.next();
+        Barn barn = new Barn(fornavn, efternavn, cprnummer);
+        System.out.println("Oprettet barn: \n" + barn.toString());
+        return barn;
+    }
 
-        return new Barn(fornavn, efternavn, cprnummer);
+    public void redigerBarn(){
+        System.out.println("Hvad vil du ændre? \n1. Fornavn\n2. Efternavn\n3. CPR nummer\n\n0. Tilbage til hovedmenuen");
+        Scanner input = new Scanner(System.in);
+        int redigerSelection = input.nextInt();
+
+        switch (redigerSelection){
+            case 0:
+                break;
+            case 1:
+                System.out.println("Nuværende fornavn: " + fornavn + "\nHvad er det nye fornavn?");
+                this.setFornavn(input.next());
+
+                System.out.println("Fornavn sat til: " + fornavn + "\n\nVil du ændre andet? 1. Ja\n0. Nej");
+                int redigerMere = input.nextInt();
+                if(redigerMere == 1){
+                    this.redigerBarn();
+                }
+
+                break;
+
+            case 2:
+                System.out.println("Nuværnde efternavn: " + efternavn + "\nHvad er det nye efternavn?");
+                this.setEfternavn(input.next());
+
+                System.out.println("Efternavn sat til: " + efternavn + "\n\nVil du ændre andet? 1. Ja\n0. Nej");
+                redigerMere = input.nextInt();
+                if(redigerMere == 1){
+                    this.redigerBarn();
+                }
+                break;
+
+            case 3:
+                System.out.println("Nuværende CPR nummer: "+ cprnummer + "Hvad er det nye CPR nummer?");
+                this.setCprnummer(input.next());
+
+                System.out.println("CPR nummer er sat til: " + cprnummer + "\n\nVil du ændre andet? 1. Ja\n0. Nej");
+                redigerMere = input.nextInt();
+                if(redigerMere == 1){
+                    this.redigerBarn();
+                }
+                break;
+
+            default:
+                System.out.println("Prøv igen.");
+                this.redigerBarn();
+                break;
+        }
     }
 }

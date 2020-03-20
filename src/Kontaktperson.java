@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Kontaktperson {
     private String fornavn;
     private String efternavn;
@@ -11,6 +13,16 @@ public class Kontaktperson {
         this.telefon = telefon;
         this.email = email;
         this.addresse = addresse;
+    }
+
+    public static void skabNyKontaktperson() {
+        Scanner console = new Scanner(System.in);
+        System.out.print("Venligst indtast kontaktpersonens navn: ");
+        String navn = console.nextLine();
+        String efternavn = navn.substring(navn.lastIndexOf(" "));
+        navn = navn.substring(0, navn.lastIndexOf(" "));
+        System.out.println(navn);
+        System.out.println(efternavn);
     }
 
     public String getFornavn() {

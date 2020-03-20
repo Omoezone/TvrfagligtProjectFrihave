@@ -27,4 +27,9 @@ public class Barn {
         this.cprnummer = cprnummer;
     }
 
+    public Barn(String fornavn, String efternavn, int cprnummer) {
+        this.fornavn = fornavn;
+        this.efternavn = efternavn;
+        this.cprnummer = cprnummer;
+    }
 }

@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Barn {
     private String fornavn;
     private String efternavn;
@@ -31,5 +33,23 @@ public class Barn {
         this.fornavn = fornavn;
         this.efternavn = efternavn;
         this.cprnummer = cprnummer;
+    }
+
+    public Barn opretNytBarn(){
+        String fornavn;
+        String efternavn;
+        int cprnummer;
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Hvad er barnets fornavn?");
+        fornavn = input.next();
+
+        System.out.println("Hvad er barnets efternavn?");
+        efternavn = input.next();
+
+        System.out.println("Hvad er barnets CPR nummer? Skriv uden mellemrum eller tegn");
+        cprnummer = input.nextInt();
+
+        return new Barn(fornavn, efternavn, cprnummer);
     }
 }

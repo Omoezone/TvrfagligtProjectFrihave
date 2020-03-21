@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Barn {
@@ -29,6 +30,10 @@ public class Barn {
         return "Fornavn: " + fornavn + "\nEfternavn: " + efternavn + "\nCPR-nummer: " + cprnummer;
     }
 
+    public String toFile() {
+        return fornavn + "\n" + efternavn + "\n" + cprnummer;
+    }
+
     public void setCprnummer(String cprnummer) {
         this.cprnummer = cprnummer;
     }
@@ -37,6 +42,15 @@ public class Barn {
         this.fornavn = fornavn;
         this.efternavn = efternavn;
         this.cprnummer = cprnummer;
+    }
+
+    //This way of constructing an object makes it smoother and reduces the amount of line coding.
+    public Barn(String fornavn, String efternavn, String cprnummer, ArrayList<Barn> listB) {
+        this.fornavn = fornavn;
+        this.efternavn = efternavn;
+        this.cprnummer = cprnummer;
+
+        listB.add(this);
     }
 
     public static Barn opretNytBarn(){

@@ -22,6 +22,43 @@ public class Familie {
         this.kontakt3 = kontakt3;
     }
 
+    public static Familie opretFamilie() {
+        Barn nytBarn = Barn.opretNytBarn();
+        System.out.println("Der skal nu tilføjes en kontaktperson til "+nytBarn.getFornavn()+" "+nytBarn.getEfternavn()+".");
+        Kontaktperson kontakt1 = Kontaktperson.skabNyKontaktperson();
+        System.out.println("Skal der tilføjes flere kontaktpersoner til "+nytBarn.getFornavn()+" "+nytBarn.getEfternavn()+"?"+
+                           "\n1. Ja\n2. Nej");
+        if(Menu.getInt() == 2) {
+            return new Familie(nytBarn, kontakt1);
+        } else {
+            Kontaktperson kontakt2 = Kontaktperson.skabNyKontaktperson();
+            System.out.println("Skal der tilføjes flere kontaktpersoner til "+nytBarn.getFornavn()+" "+nytBarn.getEfternavn()+"?"+
+                               "\n1. Ja\n2. Nej");
+            if(Menu.getInt() == 2) {
+                return new Familie(nytBarn, kontakt1, kontakt2);
+            } else {
+                Kontaktperson kontakt3 = Kontaktperson.skabNyKontaktperson();
+                return new Familie(nytBarn, kontakt1, kontakt2, kontakt3);
+            }
+        }
+    }
+
+    public String toString() {
+        if(kontakt2 == null) {
+            return "Barnets navn: "+barn.getFornavn()+" "+barn.getEfternavn()+"" +
+                    "\nKontaktperson 1: "+kontakt1.getFornavn()+" "+kontakt1.getEfternavn();
+        } else if (kontakt3 == null) {
+            return "Barnets navn: "+barn.getFornavn()+" "+barn.getEfternavn()+"" +
+                    "\nKontaktperson 1: "+kontakt1.getFornavn()+" "+kontakt1.getEfternavn()+
+                    "\nKontaktperson 2: "+kontakt2.getFornavn()+" "+kontakt2.getEfternavn();
+        } else {
+            return "Barnets navn: "+barn.getFornavn()+" "+barn.getEfternavn()+"" +
+                    "\nKontaktperson 1: "+kontakt1.getFornavn()+" "+kontakt1.getEfternavn()+
+                    "\nKontaktperson 2: "+kontakt2.getFornavn()+" "+kontakt2.getEfternavn()+
+                    "\nKontaktperson 3: "+kontakt3.getFornavn()+" "+kontakt3.getEfternavn();
+        }
+    }
+
     public Barn getBarn() {
         return barn;
     }

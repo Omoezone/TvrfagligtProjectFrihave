@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Menu {
@@ -71,5 +72,10 @@ public class Menu {
             console.nextLine();
         }
         return console.nextInt();
+    }
+
+    public static void createVagtPlan() {
+        System.out.println("Medarbejder/tTidsrum");
+
     }
 }

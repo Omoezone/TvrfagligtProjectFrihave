@@ -45,11 +45,10 @@ public class Barn {
         String cprnummer;
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Hvad er barnets fornavn?");
-        fornavn = input.next();
-
-        System.out.println("Hvad er barnets efternavn?");
-        efternavn = input.next();
+        System.out.print("Venligst indtast barnest navn: ");
+        fornavn = input.nextLine();
+        efternavn = fornavn.substring(fornavn.lastIndexOf(" ")+1);
+        fornavn = fornavn.substring(0, fornavn.lastIndexOf(" "));
 
         System.out.println("Hvad er barnets CPR nummer? Skriv uden mellemrum eller tegn");
         cprnummer = input.next();

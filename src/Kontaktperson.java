@@ -15,14 +15,32 @@ public class Kontaktperson {
         this.addresse = addresse;
     }
 
-    public static void skabNyKontaktperson() {
+    public static Kontaktperson skabNyKontaktperson() {
         Scanner console = new Scanner(System.in);
         System.out.print("Venligst indtast kontaktpersonens navn: ");
         String navn = console.nextLine();
-        String efternavn = navn.substring(navn.lastIndexOf(" "));
+        //separerer fornavn og efternavn efter sidste mellemrum
+        String efternavn = navn.substring(navn.lastIndexOf(" ")+1);
         navn = navn.substring(0, navn.lastIndexOf(" "));
-        System.out.println(navn);
-        System.out.println(efternavn);
+
+        System.out.print("Venligst indtast "+efternavn+"'s telefonnummer: ");
+        String telefon = console.next();
+        console.nextLine(); //consume line break input fra ovenstaaende
+
+        System.out.print("Venligst indtast "+efternavn+"'s email-addresse: ");
+        String email = console.next();
+        console.nextLine();
+
+        System.out.print("Venligst indtast "+efternavn+"'s addresse: ");
+        String addresse = console.nextLine();
+
+        Kontaktperson temp = new Kontaktperson(navn, efternavn, telefon, email, addresse);
+        return temp;
+    }
+
+    public String toString() {
+        return "Navn: " + fornavn+" "+efternavn+"\nTelefonnummer: "+telefon+"\nEmail: "+email+
+               "\nAddresse: "+addresse;
     }
 
     public String getFornavn() {

@@ -49,9 +49,8 @@ public class FileHandler {
             String efternavn = input.nextLine();
             String telefon = input.nextLine();
             String email = input.nextLine();
-            String addresse = input.nextLine();
 
-            Kontaktperson temp = new Kontaktperson(fornavn, efternavn, telefon, email, addresse);
+            Kontaktperson temp = new Kontaktperson(fornavn, efternavn, telefon, email);
             listKP.add(temp);
         }
         return listKP;

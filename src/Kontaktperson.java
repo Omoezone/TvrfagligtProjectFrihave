@@ -99,10 +99,4 @@ public class Kontaktperson {
     public void setAddresse(String addresse) {
         this.addresse = addresse;
     }
-
-    public static void printKontaktPersonList(ArrayList<Kontaktperson> listKP) {
-        for(int i = 0; i < listKP.size(); i++) {
-            System.out.println(listKP.get(i));
-        }
-    }
 }

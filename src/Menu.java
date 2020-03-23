@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
-    public static void menuSelection(ArrayList<Medarbejder> listM, ArrayList<Kontaktperson> listKP) {
+    public static void menuSelection(ArrayList<Familie> listF, ArrayList<Barn> listB, ArrayList<Medarbejder> listM, ArrayList<Kontaktperson> listKP) {
         boolean menuFlag = true;
         while (menuFlag) {
             System.out.println("Hvad ønsker du at gøre?\n1. Indskriv data\n2. Opret vagtplan\n" +
@@ -11,7 +11,7 @@ public class Menu {
                                "5. Kontaktpersoners oplysninger");
             switch(getInt()) {
                 case 1:
-                    indskrivData();
+                    indskrivData(listB, listF);
                     break;
                 case 2:
                     //TODO opretVagtplan();
@@ -29,7 +29,7 @@ public class Menu {
                     break;
                 default:
                     System.out.println("Input var ikke en mulig selektion.");
-                    menuSelection(listM, listKP);
+                    menuSelection(listF, listB, listM, listKP);
             }
 
             //om menuen skal kores igen
@@ -64,7 +64,7 @@ public class Menu {
                 break;
             default:
                 System.out.println("Input var ikke en mulig selektion.");
-                indskrivData(ArrayList<Barn> listB);;
+                indskrivData(listB, listF);
         }
     }
 

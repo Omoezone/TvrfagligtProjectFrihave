@@ -25,7 +25,7 @@ public class Menu {
                     break;
                 case 5:
                     //TODO kontaktpersoner();
-                    Kontaktperson.printKontaktPersonList(listKP);
+
                     break;
                 default:
                     System.out.println("Input var ikke en mulig selektion.");
@@ -56,11 +56,11 @@ public class Menu {
                 break;
             case 3:
                 //TODO sletBarn();
-                Barn.deleteBarn(listB);
+                //Barn.deleteBarn(listB);
                 break;
             case 4:
                 //TODO printBarnListe();
-                Barn.printBarnListe(listF);
+                Barn.printBarnListe(listB);
                 break;
             default:
                 System.out.println("Input var ikke en mulig selektion.");

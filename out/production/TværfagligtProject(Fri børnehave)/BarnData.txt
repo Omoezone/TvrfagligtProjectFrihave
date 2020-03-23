@@ -1,6 +1,8 @@
-Arne
-Jensen
-203947884
-Sebastian
-Sørensen
-133423231
+Arne|Jensen|010115-5555
+Sebastian|Sørensen|050816-1987
+Bjarne|Troelsen|020814-4067
+Bendt|Horn|151018-4409
+Kaj|Anker|160516-3309
+Eline|Lorenzen|310116-4432
+Emma|Antonsen|071216-5556
+Klara|Kristoffersen|051217-2452

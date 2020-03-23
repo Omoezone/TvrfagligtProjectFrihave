@@ -13,11 +13,9 @@ public class FileHandler {
         }
     }
 
-    public static void loadFamilieToDisk(ArrayList<Familie> listF) throws FileNotFoundException{
+    public static void loadFamilieToDisk(Familie familie) throws FileNotFoundException{
         PrintStream output = new PrintStream(new File("FamilieData.txt"));
-        for(int i = 0; i < listF.size(); i++) {
-            output.println(i);
-        }
+            output.println(familie.toFile());
     }
 
     public static void loadKontaktPersonToDisk(ArrayList<Kontaktperson> listKP) throws FileNotFoundException {
@@ -27,6 +25,10 @@ public class FileHandler {
         }
     }
 
+    public static void loadBarnData()throws IOException {
+        BufferedReader buff = new BufferedReader(new FileReader("src/BarnData.txt"));
+        ArrayList<String> read = new ArrayList<>();
+    }
     public static ArrayList<Barn> loadBarnFromDisk() throws FileNotFoundException {
         ArrayList<Barn> listB = new ArrayList<>();
         Scanner input = new Scanner(new File("src/BarnData.txt"));
@@ -66,7 +68,7 @@ public class FileHandler {
             read.add(line);
             line = buff.readLine();
         }
-        
+
     }
 
     public static ArrayList<Medarbejder> loadMedarbejderFromDisk()throws FileNotFoundException {

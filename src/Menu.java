@@ -1,9 +1,10 @@
+import java.io.FileNotFoundException;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
-    public static void menuSelection(ArrayList<Familie> listF, ArrayList<Barn> listB, ArrayList<Medarbejder> listM, ArrayList<Kontaktperson> listKP) {
+    public static void menuSelection(ArrayList<Familie> listF, ArrayList<Barn> listB, ArrayList<Medarbejder> listM, ArrayList<Kontaktperson> listKP)throws FileNotFoundException {
         boolean menuFlag = true;
         while (menuFlag) {
             System.out.println("Hvad ønsker du at gøre?\n1. Indskriv data\n2. Opret vagtplan\n" +
@@ -40,7 +41,7 @@ public class Menu {
         }
     }
 
-    public static void indskrivData(ArrayList<Barn> listB, ArrayList<Familie> listF) {
+    public static void indskrivData(ArrayList<Barn> listB, ArrayList<Familie> listF)throws FileNotFoundException {
         System.out.println("Hvilken data ønsker du at behandle?\n1. Rediger barn\n2. Tilføj barn\n3. Slet barn\n" +
                            "4. Se liste over børn");
         switch(getInt()) {

@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+
 public class Familie {
     private Barn barn;
     private Kontaktperson kontakt1;
@@ -22,35 +24,54 @@ public class Familie {
         this.kontakt3 = kontakt3;
     }
 
-    public static Familie opretFamilie() {
+    public static Familie opretFamilie()throws FileNotFoundException {
         Barn nytBarn = Barn.opretNytBarn();
         System.out.println("Der skal nu tilføjes en kontaktperson til "+nytBarn.getFornavn()+" "+nytBarn.getEfternavn()+".");
         Kontaktperson kontakt1 = Kontaktperson.skabNyKontaktperson();
         System.out.println("Skal der tilføjes flere kontaktpersoner til "+nytBarn.getFornavn()+" "+nytBarn.getEfternavn()+"?"+
                            "\n1. Ja\n2. Nej");
         if(Menu.getInt() == 2) {
-            return new Familie(nytBarn, kontakt1);
+           Familie temp = new Familie(nytBarn, kontakt1);
+           FileHandler.loadFamilieToDisk(temp);
+            return temp;
         } else {
             Kontaktperson kontakt2 = Kontaktperson.skabNyKontaktperson();
             System.out.println("Skal der tilføjes flere kontaktpersoner til "+nytBarn.getFornavn()+" "+nytBarn.getEfternavn()+"?"+
                                "\n1. Ja\n2. Nej");
             if(Menu.getInt() == 2) {
-                return new Familie(nytBarn, kontakt1, kontakt2);
+                Familie temp = new Familie(nytBarn, kontakt1, kontakt2);
+                FileHandler.loadFamilieToDisk(temp);
+                    return temp;
             } else {
                 Kontaktperson kontakt3 = Kontaktperson.skabNyKontaktperson();
-                return new Familie(nytBarn, kontakt1, kontakt2, kontakt3);
+                Familie temp = new Familie(nytBarn, kontakt1, kontakt2, kontakt3);
+                FileHandler.loadFamilieToDisk(temp);
+                    return temp;
             }
         }
+
     }
 
     public String toFile() {
         if(kontakt2 == null) {
-            return getBarn() + "/" + getKontakt1();
+            return getBarn().getFornavn() + "|" + getBarn().getEfternavn()+ "|" + getBarn().getCprnummer() + "/" + getKontakt1Info();
         } else if(kontakt3 == null) {
-            return getBarn() + "\"/\"" + getKontakt1() + "\"" + getKontakt2();
+            return getBarn().getFornavn() + "|" + getBarn().getEfternavn()+ "|" + getBarn().getCprnummer() + "/\"" + getKontakt1Info() + "\"" + getKontakt2Info();
         } else {
-            return getBarn() + "\"/\"" + getKontakt1() + "\"" + getKontakt2() + "\"" +  getKontakt3();
+            return getBarn().getFornavn() + "|" + getBarn().getEfternavn()+ "|" + getBarn().getCprnummer() + "/\"" + getKontakt1Info()+ "\"" + getKontakt2Info() + "\"" + getKontakt3Info();
         }
+    }
+
+    public String getKontakt1Info() {
+        return getKontakt1().getFornavn() + "|" + getKontakt1().getEfternavn() + "|" + getKontakt1().getTelefon() + "|" + getKontakt1().getAddresse() + "|" + getKontakt1().getEmail();
+    }
+
+    public String getKontakt2Info() {
+        return getKontakt2().getFornavn() + "|" + getKontakt2().getEfternavn() + "|" + getKontakt2().getTelefon() + "|" + getKontakt2().getAddresse() + "|" + getKontakt2().getEmail();
+    }
+
+    public String getKontakt3Info() {
+        return getKontakt3().getFornavn() + "|" + getKontakt3().getEfternavn() + "|" + getKontakt3().getTelefon() + "|" + getKontakt3().getAddresse() + "|" + getKontakt3().getEmail();
     }
 
     public String toString() {

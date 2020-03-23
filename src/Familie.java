@@ -43,6 +43,16 @@ public class Familie {
         }
     }
 
+    public String toFile() {
+        if(kontakt2 == null) {
+            return getBarn() + "/" + getKontakt1();
+        } else if(kontakt3 == null) {
+            return getBarn() + "\"/\"" + getKontakt1() + "\"" + getKontakt2();
+        } else {
+            return getBarn() + "\"/\"" + getKontakt1() + "\"" + getKontakt2() + "\"" +  getKontakt3();
+        }
+    }
+
     public String toString() {
         if(kontakt2 == null) {
             return "Barnets navn: "+barn.getFornavn()+" "+barn.getEfternavn()+"" +

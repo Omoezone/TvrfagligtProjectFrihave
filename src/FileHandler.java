@@ -29,7 +29,7 @@ public class FileHandler {
 
     public static ArrayList<Barn> loadBarnFromDisk() throws FileNotFoundException {
         ArrayList<Barn> listB = new ArrayList<>();
-        Scanner input = new Scanner(new File("src/BarnData.txt")).useDelimiter("|");
+        Scanner input = new Scanner(new File("src/BarnData.txt"));
         while(input.hasNext()) {
             String fornavn = input.next();
             String efternavn = input.next();
@@ -57,10 +57,22 @@ public class FileHandler {
         return listKP;
     }
 
+    public static void readFromMedarbejderData() throws IOException {
+        BufferedReader buff = new BufferedReader(new FileReader("src/MedarbejderData.txt"));
+        ArrayList<String> read = new ArrayList<>();
+        String line = buff.readLine();
+
+        while(line != null) {
+            read.add(line);
+            line = buff.readLine();
+        }
+        
+    }
+
     public static ArrayList<Medarbejder> loadMedarbejderFromDisk()throws FileNotFoundException {
         ArrayList<Medarbejder> listM = new ArrayList<>();
         Scanner input = new Scanner(new File("src/Medarbejderdata.txt")).useDelimiter("|");
-        while(input.hasNext()){
+        while(input.hasNextLine()){
             String fornavn = input.next();
             String efternavn = input.next();
             String arbejdsdag = input.next();

@@ -144,9 +144,11 @@ public class Barn {
 
     public static void printBarnListe(ArrayList<Familie> listF) {
         System.out.printf("Barn Liste");
-            for(int i = 0; i < listF.size(); i++) {
-                System.out.println(listF.get(i));
+        int i;
+            for( i = 0; i < listF.size()-1; i++) {
+                System.out.print(listF.get(i)+"-");
             }
+        System.out.print(listF.get(i));
 
     }
 

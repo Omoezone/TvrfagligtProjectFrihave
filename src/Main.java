@@ -5,6 +5,7 @@ public class Main {
         ArrayList<Medarbejder> listM = new ArrayList<>();
         Medarbejder.menuMedarbejderVagtplan(listM);
         System.out.println("hello");
+        Menu.menuSelection();
         Kontaktperson test = Kontaktperson.skabNyKontaktperson();
         System.out.println(test);
     }

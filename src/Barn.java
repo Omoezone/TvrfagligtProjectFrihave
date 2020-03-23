@@ -31,7 +31,7 @@ public class Barn {
     }
 
     public String toFile() {
-        return fornavn + "\n" + efternavn + "\n" + cprnummer;
+        return fornavn + "|" + efternavn + "|" + cprnummer;
     }
 
     public void setCprnummer(String cprnummer) {
@@ -144,11 +144,11 @@ public class Barn {
 
     public static void printBarnListe(ArrayList<Familie> listF) {
         System.out.printf("Barn Liste");
-        int i;
-            for( i = 0; i < listF.size()-1; i++) {
-                System.out.print(listF.get(i)+"-");
+
+            for( int i = 0; i < listF.size()-1; i++) {
+                System.out.print(listF.get(i));
             }
-        System.out.print(listF.get(i));
+
 
     }
 

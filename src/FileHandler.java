@@ -29,11 +29,11 @@ public class FileHandler {
 
     public static ArrayList<Barn> loadBarnFromDisk() throws FileNotFoundException {
         ArrayList<Barn> listB = new ArrayList<>();
-        Scanner input = new Scanner(new File("src/BarnData.txt"));
-        while(input.hasNextLine()) {
-            String fornavn = input.nextLine();
-            String efternavn = input.nextLine();
-            String cprNummer = input.nextLine();
+        Scanner input = new Scanner(new File("src/BarnData.txt")).useDelimiter("|");
+        while(input.hasNext()) {
+            String fornavn = input.next();
+            String efternavn = input.next();
+            String cprNummer = input.next();
 
             Barn temp = new Barn(fornavn, efternavn, cprNummer);
             listB.add(temp);
@@ -43,16 +43,38 @@ public class FileHandler {
 
     public static ArrayList<Kontaktperson> loadKontaktPersonFromDisk()throws FileNotFoundException {
         ArrayList<Kontaktperson> listKP = new ArrayList<>();
-        Scanner input = new Scanner(new File("KontaktpersonData.txt"));
+        Scanner input = new Scanner(new File("src/kontaktpersonData.txt")).useDelimiter("|");
         while(input.hasNextLine()) {
-            String fornavn = input.nextLine();
-            String efternavn = input.nextLine();
-            String telefon = input.nextLine();
-            String email = input.nextLine();
+            String fornavn = input.next();
+            String efternavn = input.next();
+            String telefon = input.next();
+            String email = input.next();
+            String addresse = input.next();
 
-            Kontaktperson temp = new Kontaktperson(fornavn, efternavn, telefon, email);
+            Kontaktperson temp = new Kontaktperson(fornavn, efternavn, telefon, email, addresse);
             listKP.add(temp);
         }
         return listKP;
+    }
+
+    public static ArrayList<Medarbejder> loadMedarbejderFromDisk()throws FileNotFoundException {
+        ArrayList<Medarbejder> listM = new ArrayList<>();
+        Scanner input = new Scanner(new File("src/Medarbejderdata.txt")).useDelimiter("|");
+        while(input.hasNext()){
+            String fornavn = input.next();
+            String efternavn = input.next();
+            String arbejdsdag = input.next();
+            String tidsrum = input.next();
+
+            Medarbejder temp = new Medarbejder(fornavn, efternavn, arbejdsdag, tidsrum, listM);
+        }
+        return listM;
+    }
+
+    public static void loadMedarbejderToDisk(ArrayList<Medarbejder> listM)throws FileNotFoundException {
+        PrintStream output = new PrintStream(new File("MedarbejderData.txt"));
+            for(int i = 0; i < listM.size(); i++) {
+                output.println(listM.get(i).toFile());
+            }
     }
 }

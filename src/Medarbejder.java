@@ -56,6 +56,10 @@ public class Medarbejder {
     public String toString() {
         return String.format("Medarbejder: %s %s - %s", fornavn, efternavn, tidsrum);
     }
+
+    public String toFile() {
+        return fornavn + "|" + efternavn + "|" + arbejdsdag + "|" + tidsrum;
+    }
     //A method that creates the object by making the user type in the data.
     private static void createMedarbejder(ArrayList<Medarbejder> listM) {
         Scanner console = new Scanner(System.in);
@@ -143,7 +147,7 @@ public class Medarbejder {
     private static void searchForMedarbejder(ArrayList<Medarbejder> listM) {
         Scanner console = new Scanner(System.in);
         System.out.println("Hvad ønsker du at søge udfra");
-        System.out.println("1. \t2. \t3. \t4.");
+        System.out.println("1. fornavn \t2. Medarbejder efternavn \t3. Medarbejder arbejdsdag \t4. Medarbejder arbejdsperiode");
         int sfValg = console.nextInt();
         switch(sfValg) {
             case 1:
@@ -219,6 +223,19 @@ public class Medarbejder {
 
 
                 }
+            case 4:
+                System.out.println("Her kan du søge efter medarbejder udfra deres arbejdsperiode");
+                String arbejdsperiode = console.next();
+                for(int i = 0; i < listM.size(); i++) {
+                    if(arbejdsperiode.equalsIgnoreCase(listM.get(i).tidsrum)) {
+                        System.out.println(listM.get(i));
+                    }
+                }
+                break;
+            default:
+                System.out.println("Input er ikke idenficerbart\nPrøv venligst igen");
+                searchForMedarbejder(listM);
+                break;
 
         }
 

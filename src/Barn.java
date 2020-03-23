@@ -56,7 +56,6 @@ public class Barn {
     public static void createNyBarn(ArrayList<Barn> listB, ArrayList<Barn> listVL) {
         if(listB.size() <= 99) {
 
-
         }
     }
 
@@ -142,11 +141,11 @@ public class Barn {
             }
     }
 
-    public static void printBarnListe(ArrayList<Familie> listF) {
+    public static void printBarnListe(ArrayList<Barn> listB) {
         System.out.printf("Barn Liste");
 
-            for( int i = 0; i < listF.size()-1; i++) {
-                System.out.print(listF.get(i));
+            for( int i = 0; i < listB.size(); i++) {
+                System.out.print(listB.get(i));
             }
 
 

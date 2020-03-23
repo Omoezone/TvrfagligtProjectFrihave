@@ -31,7 +31,7 @@ public class Barn {
     }
 
     public String toFile() {
-        return fornavn + "\n" + efternavn + "\n" + cprnummer;
+        return fornavn + "|" + efternavn + "|" + cprnummer;
     }
 
     public void setCprnummer(String cprnummer) {
@@ -51,6 +51,13 @@ public class Barn {
         this.cprnummer = cprnummer;
 
         listB.add(this);
+    }
+
+    public static void createNyBarn(ArrayList<Barn> listB, ArrayList<Barn> listVL) {
+        if(listB.size() <= 99) {
+
+
+        }
     }
 
     public static Barn opretNytBarn(){
@@ -117,4 +124,38 @@ public class Barn {
                 redigerBarn(b);
         }
     }
+
+    //Author Michael Berko
+    public static void deleteBarn(ArrayList<Barn> listB) {
+        Scanner console = new Scanner(System.in);
+        System.out.println("Hvilket barn kunne du tænke dig at slette?");
+        System.out.println("Liste of eksisterende børn");
+            for(int i = 0; i < listB.size(); i++) {
+                System.out.println(i + 1 + ". " + listB.get(i).getFornavn() + " " + listB.get(i).getEfternavn());
+            }
+        int dValg = console.nextInt() - 1;
+        System.out.println("Du har valgt at fjerne " + listB.get(dValg).getFornavn() + " " + listB.get(dValg).getEfternavn());
+        System.out.println("Er du sikker?");
+        String sValg = console.next();
+            if(sValg.equalsIgnoreCase("Ja")) {
+                listB.remove(dValg);
+            }
+    }
+
+    public static void printBarnListe(ArrayList<Familie> listF) {
+        System.out.printf("Barn Liste");
+
+            for( int i = 0; i < listF.size()-1; i++) {
+                System.out.print(listF.get(i));
+            }
+
+
+    }
+
+    public String getFuldenavn(){
+        return fornavn + " " + efternavn;
+    }
+    /*public String toString() {
+        return "Barnets fuldenavn: " + getFuldenavn() + "\nBarnets CPR: " + cprnummer;
+    }*/
 }

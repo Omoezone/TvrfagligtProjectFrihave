@@ -1,7 +1,9 @@
+import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
-    public static void menuSelection() {
+    public static void menuSelection(ArrayList<Familie> listF, ArrayList<Barn> listB, ArrayList<Medarbejder> listM, ArrayList<Kontaktperson> listKP) {
         boolean menuFlag = true;
         while (menuFlag) {
             System.out.println("Hvad ønsker du at gøre?\n1. Indskriv data\n2. Opret vagtplan\n" +
@@ -9,10 +11,11 @@ public class Menu {
                                "5. Kontaktpersoners oplysninger");
             switch(getInt()) {
                 case 1:
-                    indskrivData();
+                    indskrivData(listB, listF);
                     break;
                 case 2:
                     //TODO opretVagtplan();
+                    Medarbejder.menuMedarbejderVagtplan(listM);
                     break;
                 case 3:
                     //TODO opretTelefonliste();
@@ -22,10 +25,11 @@ public class Menu {
                     break;
                 case 5:
                     //TODO kontaktpersoner();
+                    //Kontaktperson.printKontaktPersonList(listKP);
                     break;
                 default:
                     System.out.println("Input var ikke en mulig selektion.");
-                    menuSelection();
+                    menuSelection(listF, listB, listM, listKP);
             }
 
             //om menuen skal kores igen
@@ -36,7 +40,7 @@ public class Menu {
         }
     }
 
-    public static void indskrivData() {
+    public static void indskrivData(ArrayList<Barn> listB, ArrayList<Familie> listF) {
         System.out.println("Hvilken data ønsker du at behandle?\n1. Rediger barn\n2. Tilføj barn\n3. Slet barn\n" +
                            "4. Se liste over børn");
         switch(getInt()) {
@@ -52,13 +56,15 @@ public class Menu {
                 break;
             case 3:
                 //TODO sletBarn();
+                Barn.deleteBarn(listB);
                 break;
             case 4:
                 //TODO printBarnListe();
+                Barn.printBarnListe(listF);
                 break;
             default:
                 System.out.println("Input var ikke en mulig selektion.");
-                indskrivData();;
+                indskrivData(listB, listF);
         }
     }
 
@@ -71,5 +77,10 @@ public class Menu {
             console.nextLine();
         }
         return console.nextInt();
+    }
+
+    public static void createVagtPlan() {
+        System.out.println("Medarbejder/tTidsrum");
+
     }
 }

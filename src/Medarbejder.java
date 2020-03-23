@@ -230,7 +230,6 @@ public class Medarbejder {
                 if(listM.get(i).getArbejdsdag().equalsIgnoreCase("Mandag")) {
                     System.out.println(listM.get(i));
                 }
-
             }
         System.out.println("- Tirsdag");
             for(int i = 0; i < listM.size(); i++) {

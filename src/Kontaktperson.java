@@ -14,7 +14,17 @@ public class Kontaktperson {
         this.email = email;
     }
 
-    public static Kontaktperson skabNyKontaktperson() {
+
+    public Kontaktperson(String fornavn, String efternavn, String telefon, String email, ArrayList<Kontaktperson> listKP) {
+        this.fornavn = fornavn;
+        this.efternavn = efternavn;
+        this.telefon = telefon;
+        this.email = email;
+
+        listKP.add(this);
+    }
+
+    public static void skabNyKontaktperson(ArrayList<Kontaktperson> listKP) {
         Scanner console = new Scanner(System.in);
         System.out.print("Venligst indtast kontaktpersonens navn: ");
         String navn = console.nextLine();
@@ -30,8 +40,7 @@ public class Kontaktperson {
         String email = console.next();
         console.nextLine();
 
-        Kontaktperson temp = new Kontaktperson(navn, efternavn, telefon, email);
-        return temp;
+        Kontaktperson temp = new Kontaktperson(navn, efternavn, telefon, email, listKP);
     }
 
     public String toString() {

@@ -6,16 +6,13 @@ public class Kontaktperson {
     private String efternavn;
     private String telefon;
     private String email;
-    private String addresse;
 
-    public Kontaktperson(String fornavn, String efternavn, String telefon, String email, String addresse) {
+    public Kontaktperson(String fornavn, String efternavn, String telefon, String email) {
         this.fornavn = fornavn;
         this.efternavn = efternavn;
         this.telefon = telefon;
         this.email = email;
-        this.addresse = addresse;
     }
-
 
     public static Kontaktperson skabNyKontaktperson() {
         Scanner console = new Scanner(System.in);
@@ -29,24 +26,20 @@ public class Kontaktperson {
         String telefon = console.next();
         console.nextLine(); //consume line break input fra ovenstaaende
 
-        System.out.print("Venligst indtast "+efternavn+"'s email-addresse: ");
+        System.out.print("Venligst indtast "+efternavn+"'s email: ");
         String email = console.next();
         console.nextLine();
 
-        System.out.print("Venligst indtast "+efternavn+"'s addresse: ");
-        String addresse = console.nextLine();
-
-        Kontaktperson temp = new Kontaktperson(navn, efternavn, telefon, email, addresse);
+        Kontaktperson temp = new Kontaktperson(navn, efternavn, telefon, email);
         return temp;
     }
 
     public String toString() {
-        return "Navn: " + fornavn+" "+efternavn+"\nTelefonnummer: "+telefon+"\nEmail: "+email+
-               "\nAddresse: "+addresse;
+        return "Navn: " + fornavn+" "+efternavn+"\nTelefonnummer: "+telefon+"\nEmail: "+email;
     }
 
     public String toFile() {
-        return fornavn + "/n" + efternavn + "/" + telefon + "/n" + email + "\n" + addresse;
+        return fornavn + "/n" + efternavn + "/" + telefon + "/n" + email;
 
     }
 
@@ -82,11 +75,4 @@ public class Kontaktperson {
         this.email = email;
     }
 
-    public String getAddresse() {
-        return addresse;
-    }
-
-    public void setAddresse(String addresse) {
-        this.addresse = addresse;
-    }
 }

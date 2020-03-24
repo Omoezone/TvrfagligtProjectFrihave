@@ -63,15 +63,15 @@ public class Familie {
     }
 
     public String getKontakt1Info() {
-        return getKontakt1().getFornavn() + "|" + getKontakt1().getEfternavn() + "|" + getKontakt1().getTelefon() + "|" + getKontakt1().getAddresse() + "|" + getKontakt1().getEmail();
+        return getKontakt1().getFornavn() + "|" + getKontakt1().getEfternavn() + "|" + getKontakt1().getTelefon() + "|" + getKontakt1().getEmail();
     }
 
     public String getKontakt2Info() {
-        return getKontakt2().getFornavn() + "|" + getKontakt2().getEfternavn() + "|" + getKontakt2().getTelefon() + "|" + getKontakt2().getAddresse() + "|" + getKontakt2().getEmail();
+        return getKontakt2().getFornavn() + "|" + getKontakt2().getEfternavn() + "|" + getKontakt2().getTelefon() + "|" + getKontakt2().getEmail();
     }
 
     public String getKontakt3Info() {
-        return getKontakt3().getFornavn() + "|" + getKontakt3().getEfternavn() + "|" + getKontakt3().getTelefon() + "|" + getKontakt3().getAddresse() + "|" + getKontakt3().getEmail();
+        return getKontakt3().getFornavn() + "|" + getKontakt3().getEfternavn() + "|" + getKontakt3().getTelefon() + "|" + getKontakt3().getEmail();
     }
 
     public String toString() {

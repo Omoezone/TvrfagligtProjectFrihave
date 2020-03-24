@@ -14,7 +14,7 @@ public class FileHandler {
     }
 
     public static void loadFamilieToDisk(Familie familie) throws FileNotFoundException{
-        PrintStream output = new PrintStream(new File("FamilieData.txt"));
+        PrintStream output = new PrintStream(new File("src/FamilieData.txt"));
             output.println(familie.toFile());
     }
 
@@ -51,9 +51,9 @@ public class FileHandler {
             String efternavn = input.next();
             String telefon = input.next();
             String email = input.next();
-            String addresse = input.next();
 
-            Kontaktperson temp = new Kontaktperson(fornavn, efternavn, telefon, email, addresse);
+
+            Kontaktperson temp = new Kontaktperson(fornavn, efternavn, telefon, email);
             listKP.add(temp);
         }
         return listKP;

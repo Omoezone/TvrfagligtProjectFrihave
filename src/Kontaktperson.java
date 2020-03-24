@@ -24,7 +24,7 @@ public class Kontaktperson {
         listKP.add(this);
     }
 
-    public static void skabNyKontaktperson(ArrayList<Kontaktperson> listKP) {
+    public static Kontaktperson skabNyKontaktperson(ArrayList<Kontaktperson> listKP) {
         Scanner console = new Scanner(System.in);
         System.out.print("Venligst indtast kontaktpersonens navn: ");
         String navn = console.nextLine();
@@ -41,6 +41,7 @@ public class Kontaktperson {
         console.nextLine();
 
         Kontaktperson temp = new Kontaktperson(navn, efternavn, telefon, email, listKP);
+        return temp;
     }
 
     public String toString() {

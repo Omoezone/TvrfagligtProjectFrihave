@@ -80,7 +80,7 @@ public class Barn {
     public static void redigerBarn(Barn b){
         System.out.println("Hvad vil du ændre? \n1. Fornavn\n2. Efternavn\n3. CPR nummer\n\n0. Tilbage til hovedmenuen");
         Scanner input = new Scanner(System.in);
-        int redigerSelection = input.nextInt();
+        int redigerSelection = InputHelper.getOptionFromUser(0,3);
 
         switch (redigerSelection){
             case 0:
@@ -122,6 +122,24 @@ public class Barn {
                 System.out.println("Input var ikke en mulig selektion.");
                 redigerBarn(b);
         }
+    }
+    //Select children to editmethod
+    public static Barn selectBarn(ArrayList<Barn> listB) {
+        Scanner console = new Scanner(System.in);
+        System.out.println("Vælg det barn, som skal behandles.");
+        for(int i = 0; i < listB.size(); i++) {
+            System.out.println(i +1 + ". "+ listB.get(i).getFornavn() + " " + listB.get(i).getEfternavn());
+        }
+        int sValg = InputHelper.getOptionFromUser(1,listB.size()) -1;
+        System.out.println("Du har valgt at tage fat i " + listB.get(sValg).getFornavn() + " " + listB.get(sValg).getEfternavn());
+        System.out.println("Er du sikker?");
+        String valg = console.next();
+            if(valg.equalsIgnoreCase("ja")) {
+                return listB.get(sValg);
+            } else {
+                selectBarn(listB);
+            }
+            return listB.get(sValg);
     }
 
     //Author Michael Berko

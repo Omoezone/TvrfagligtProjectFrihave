@@ -53,6 +53,70 @@ public class Kontaktperson {
 
     }
 
+    public static void kontaktPersonMenu(ArrayList<Familie> listF, ArrayList<Kontaktperson> listKP) {
+        Scanner console = new Scanner(System.in);
+        System.out.println("1. Rediger kontaktperson /n2. Se liste over kontaktpersoner /n3.Slet en kontaktperson /n4. Afslut operation");
+        int menuValg = InputHelper.getOptionFromUser(1,5);
+        switch(menuValg) {
+            case 1:
+                for() {
+                    for(int i = 0; i < listF.size(); i++) {
+                        System.out.println(i + 1 + "\n" + listF.get(i));
+                    }
+                System.out.println("--------------------------------");
+                System.out.println("Indtast talet på den familie, som skal ændres:");
+                int sValg = console.nextInt() - 1;
+                System.out.println("Hvilken kontaktperson skal ændre på?");
+                    if(listF.get(sValg).getKontakt2() == null) {
+                        System.out.println(listF.get(sValg).getKontakt1() + "\n");
+                        System.out.println("1. fornavn \n2. efter \n3. telefon \n4. email ");
+                        int rValg = InputHelper.getOptionFromUser(1,4);
+                        switch(rValg) {
+                            case 1:
+                                System.out.println("Hvad vil du gerne ændre for navn til?");
+                                String newFornavn = InputHelper.getStringFromUser(console.next());
+                                System.out.println("Fornavn er ændre til " + newFornavn);
+                                listF.get(sValg).getKontakt1().setFornavn(newFornavn);
+                                break;
+                            case 2:
+                                System.out.println("Hvad vil du gerne ændre efternavn til?");
+                                String newEfternavn = InputHelper.getStringFromUser(console.next());
+                                System.out.println("Efternavn er ændre til " + newEfternavn);
+                                listF.get(sValg).getKontakt1().setFornavn(newEfternavn);
+                                break;
+                            case 3:
+                                System.out.println("Hvad vil du gerne ændre telefon-nummer til?");
+                                String newTelefon = InputHelper.getStringFromUser(console.next());
+                                System.out.println("Telefon er ændre til " + newTelefon);
+                                listF.get(sValg).getKontakt1().setFornavn(newTelefon);
+                                break;
+                            case 4:
+                                System.out.println("Hvad vil du gerne ændre email til?");
+                                String newEmail = InputHelper.getStringFromUser(console.next());
+                                System.out.println("Email er ændre til " + newEmail);
+                                listF.get(sValg).getKontakt1().setFornavn(newEmail);
+                                break;
+                            default:
+                                System.out.println("Input er ikke identificerbart \nPrøv venglist igen");
+                                break;
+                        }
+                    }
+                }
+                break;
+            case 2:
+
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            default:
+                break;
+        }
+    }
+
     public String getFornavn() {
         return fornavn;
     }

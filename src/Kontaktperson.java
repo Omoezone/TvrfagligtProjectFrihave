@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -53,60 +54,157 @@ public class Kontaktperson {
 
     }
 
-    public static void kontaktPersonMenu(ArrayList<Familie> listF, ArrayList<Kontaktperson> listKP) {
+    public String getFullNavn() {
+        return fornavn + " " + efternavn;
+    }
+// En metode, som redigerer kontaktpersonen i henholdsvis listF (liste af familier) og listKP (Liste af kontaktpersoner)
+    public static void redigerKontaktperson(ArrayList<Familie> listF, ArrayList<Kontaktperson> listKP) {
+        Scanner console = new Scanner(System.in);
+        System.out.println("Hvilken kontaktperson vil du gerne ændre?");
+            for(int i = 0; i < listKP.size(); i++) {
+                System.out.println(1 + i + ". " + listKP.get(i));
+            }
+            int valg = console.nextInt() - 1;
+        System.out.println("Du har valgt at ændre på " + listKP.get(valg) + ", hvad vil du gerne ændre?");
+        System.out.println("1. for fornavn \n2. for efternavn \n3. for telefon");
+        int rValg = console.nextInt();
+            switch(rValg) {
+                case 1:
+                    System.out.println("fornavn for påglædende er " + listKP.get(valg).getFornavn());
+                    System.out.println("Hvad ønsker du at ændre fornavn til?");
+                    String newFornavn = console.next();
+                    //Her sker der noget smart, ved at vi bruge en if/else if/else if, så er der kun en mulighed, derfor tester vi efter om,
+                    //der er noget match i familielisten, hvis der er et match, så bliver fornavnet også redigeret der.
+                    for(int i = 0; i < listF.size(); i++) {
+                        if(listF.get(i).getKontakt1().equals(listKP.get(valg))) {
+                            listF.get(i).getKontakt1().setFornavn(newFornavn);
+                        }
+                        else if(listF.get(i).getKontakt2().equals(listKP.get(valg))) {
+                            listF.get(i).getKontakt2().setFornavn(newFornavn);
+                        }
+                        else if(listF.get(i).getKontakt3().equals(listKP.get(valg))) {
+                            listF.get(i).getKontakt3().setFornavn(newFornavn);
+                        }
+                    }
+                    listKP.get(valg).setFornavn(newFornavn);
+                    System.out.println("Fornavn på pågældende er ændret til " + newFornavn);
+                    break;
+
+                case 2:
+                    System.out.println("Efternavnet for påglædende er " + listKP.get(valg).getEfternavn());
+                    System.out.println("Hvad ønsker du at ændre efternavn til?");
+                    String newEfternavn = console.next();
+                    //Her gør vi det samme som for fornavn, derfor undlader jeg at gentage mig selv.
+                    for(int i = 0; i < listF.size();i++) {
+                        if(listF.get(i).getKontakt1().equals(listKP.get(valg))) {
+                            listF.get(i).getKontakt1().setEfternavn(newEfternavn);
+                        }
+                        else if(listF.get(i).getKontakt2().equals(listKP.get(valg))) {
+                            listF.get(i).getKontakt2().setEfternavn(newEfternavn);
+                        }
+                        else if(listF.get(i).getKontakt3().equals(listKP.get(valg))) {
+                            listF.get(i).getKontakt3().setEfternavn(newEfternavn);
+                        }
+                    }
+                    listKP.get(valg).setEfternavn(newEfternavn);
+                    System.out.println("Efternavn for påglædende er ændret til " + newEfternavn);
+                    break;
+
+                case 3:
+                    System.out.println("Telefon for pågældende er " + listKP.get(valg).getTelefon());
+                    System.out.println("Hvad ønsker du att ændre eftternavn til?");
+                    String newTelefon = console.next();
+                    for(int i = 0; i < listF.size(); i ++) {
+                        if(listF.get(i).getKontakt1().equals(listKP.get(valg))) {
+                            listF.get(i).getKontakt1().setTelefon(newTelefon);
+                        }
+                        else if(listF.get(i).getKontakt2().equals(listKP.get(valg))) {
+                            listF.get(i).getKontakt2().setTelefon(newTelefon);
+                        }
+                        else if(listF.get(i).getKontakt3().equals(listKP.get(valg))) {
+                            listF.get(i).getKontakt3().setTelefon(newTelefon);
+                        }
+                    }
+                    listKP.get(valg).setTelefon(newTelefon);
+                    System.out.println("Efternavn for pågældende er ændret til " + listKP.get(valg).getTelefon());
+                    break;
+                case 4:
+                    System.out.println("Email for pågældende er " + listKP.get(valg).getEmail());
+                    System.out.println("Hvad ønsker du at ændre email til?");
+                    String newEmail = console.next();
+                    for(int i = 0; i < listF.size(); i++) {
+                        if(listF.get(i).getKontakt1().equals(listKP.get(valg))) {
+                            listF.get(i).getKontakt1().setEmail(newEmail);
+                        }
+                        else if(listF.get(i).getKontakt2().equals(listKP.get(valg))) {
+                            listF.get(i).getKontakt2().setEmail(newEmail);
+                        }
+                        else if(listF.get(i).getKontakt3().equals(listKP.get(valg))) {
+                            listF.get(i).getKontakt3().setEmail(newEmail);
+                        }
+                    }
+                    listKP.get(valg).setEmail(newEmail);
+                    System.out.println("Efternavn for pågældende er " + listKP.get(valg).getEmail());
+                    break;
+                default:
+                    System.out.println("Input er ikke identificerbart \nPrøv venligst igen");
+                    redigerKontaktperson(listF, listKP);
+                    break;
+                }
+
+            }
+
+    public static void kontaktPersonMenu(ArrayList<Familie> listF, ArrayList<Kontaktperson> listKP) throws FileNotFoundException {
         Scanner console = new Scanner(System.in);
         System.out.println("1. Rediger kontaktperson /n2. Se liste over kontaktpersoner /n3.Slet en kontaktperson /n4. Afslut operation");
         int menuValg = InputHelper.getOptionFromUser(1,5);
         switch(menuValg) {
             case 1:
-                for() {
+                Kontaktperson.redigerKontaktperson(listF, listKP);
+                    break;
+
+            case 2:
+                //We do a for loop to loop through each element in the list of families
+                //Then we print each contact person out from the family-object.
+                System.out.println("Liste over kontaktpersoner");
                     for(int i = 0; i < listF.size(); i++) {
-                        System.out.println(i + 1 + "\n" + listF.get(i));
+                        System.out.println(1 + i + ".\n" + listF.get(i).getKontakt1() + "\n" + listF.get(i).getKontakt2() + "\n" + listF.get(i).getKontakt3());
                     }
                 System.out.println("--------------------------------");
-                System.out.println("Indtast talet på den familie, som skal ændres:");
-                int sValg = console.nextInt() - 1;
-                System.out.println("Hvilken kontaktperson skal ændre på?");
-                    if(listF.get(sValg).getKontakt2() == null) {
-                        System.out.println(listF.get(sValg).getKontakt1() + "\n");
-                        System.out.println("1. fornavn \n2. efter \n3. telefon \n4. email ");
-                        int rValg = InputHelper.getOptionFromUser(1,4);
-                        switch(rValg) {
-                            case 1:
-                                System.out.println("Hvad vil du gerne ændre for navn til?");
-                                String newFornavn = InputHelper.getStringFromUser(console.next());
-                                System.out.println("Fornavn er ændre til " + newFornavn);
-                                listF.get(sValg).getKontakt1().setFornavn(newFornavn);
-                                break;
-                            case 2:
-                                System.out.println("Hvad vil du gerne ændre efternavn til?");
-                                String newEfternavn = InputHelper.getStringFromUser(console.next());
-                                System.out.println("Efternavn er ændre til " + newEfternavn);
-                                listF.get(sValg).getKontakt1().setFornavn(newEfternavn);
-                                break;
-                            case 3:
-                                System.out.println("Hvad vil du gerne ændre telefon-nummer til?");
-                                String newTelefon = InputHelper.getStringFromUser(console.next());
-                                System.out.println("Telefon er ændre til " + newTelefon);
-                                listF.get(sValg).getKontakt1().setFornavn(newTelefon);
-                                break;
-                            case 4:
-                                System.out.println("Hvad vil du gerne ændre email til?");
-                                String newEmail = InputHelper.getStringFromUser(console.next());
-                                System.out.println("Email er ændre til " + newEmail);
-                                listF.get(sValg).getKontakt1().setFornavn(newEmail);
-                                break;
-                            default:
-                                System.out.println("Input er ikke identificerbart \nPrøv venglist igen");
-                                break;
-                        }
-                    }
-                }
-                break;
-            case 2:
-
                 break;
             case 3:
+                System.out.println("Her er en liste over eksisterende familier");
+                    for(int i = 0; i < listF.size(); i++) {
+                        System.out.println(1 + i + "\n" + listF.get(i));
+                    }
+                System.out.println("Vælg venligst, hvilken familie som skal have fjernet en kontaktperson.");
+                int dValg = console.nextInt() - 1;
+                if(listF.get(dValg).getSize() == 2){
+                    listF.remove(listF.get(dValg).getKontakt1());
+                } if(listF.get(dValg).getSize() == 3) {
+                    System.out.println("Hvilken af kontaktpersonerne vil du slette?");
+                    System.out.println("1. " + listF.get(dValg).getKontakt1() + "\n2. " + listF.get(dValg).getKontakt2());
+                    int sletKP = console.nextInt();
+                        if(sletKP == 1) {
+                            listF.remove(listF.get(dValg).getKontakt1());
+                        } if(sletKP == 2) {
+                            listF.remove(listF.get(dValg).getKontakt2());
+                        }
+                } if(listF.get(dValg).getSize() == 4) {
+                    System.out.println("Hvilken af kontaktpersonerne vil du slette?");
+                    System.out.println("1. " + listF.get(dValg).getKontakt1() + "\n2. " + listF.get(dValg).getKontakt2() + "\n3. " + listF.get(dValg).getKontakt3());
+                    int sletKP2 = console.nextInt();
+                        if(sletKP2 == 1) {
+                            listF.remove(listF.get(dValg).getKontakt1());
+                        } if(sletKP2 == 2) {
+                            listF.remove(listF.get(dValg).getKontakt2());
+                        } if(sletKP2 == 3) {
+                            listF.remove(listF.get(dValg).getKontakt3());
+                    }
+                }
+                FileHandler.loadFamilieToDisk(listF);
+
+
                 break;
             case 4:
                 break;

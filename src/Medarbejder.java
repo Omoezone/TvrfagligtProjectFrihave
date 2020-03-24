@@ -225,7 +225,7 @@ public class Medarbejder {
                 }
             case 4:
                 System.out.println("Her kan du søge efter medarbejder udfra deres arbejdsperiode");
-                String arbejdsperiode = console.next();
+                String arbejdsperiode = Medarbejder.getStringFromUser(console.next());
                 for(int i = 0; i < listM.size(); i++) {
                     if(arbejdsperiode.equalsIgnoreCase(listM.get(i).tidsrum)) {
                         System.out.println(listM.get(i));
@@ -308,4 +308,16 @@ public class Medarbejder {
             }
         }
     }
+    public static String getStringFromUser(String title) {
+        Scanner scanInput = new Scanner(System.in);
+
+        System.out.printf("Please enter the " + title + " of the person%n");
+        String name = scanInput.next();
+        while (name.matches(".*\\d.*")) {
+            System.out.printf("A " + title + " cannot contain a number! Please try again%n");
+            name = scanInput.next();
+        }
+        return name;
+    }
 }
+

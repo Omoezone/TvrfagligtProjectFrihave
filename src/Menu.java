@@ -10,9 +10,9 @@ public class Menu {
             System.out.println("Hvad ønsker du at gøre?\n1. Indskriv data\n2. Opret vagtplan\n" +
                                "3. Opret telefonliste\n4. Venteliste for børnehavepladser\n" +
                                "5. Kontaktpersoners oplysninger");
-            switch(getInt()) {
+            switch(InputHelper.getOptionFromUser(1,5)) {
                 case 1:
-                    indskrivData(listB, listF);
+                    indskrivData(listB, listF, listKP);
                     break;
                 case 2:
                     //TODO opretVagtplan();
@@ -41,17 +41,18 @@ public class Menu {
         }
     }
 
-    public static void indskrivData(ArrayList<Barn> listB, ArrayList<Familie> listF)throws FileNotFoundException {
+    public static void indskrivData(ArrayList<Barn> listB, ArrayList<Familie> listF, ArrayList<Kontaktperson> listKP)throws FileNotFoundException {
         System.out.println("Hvilken data ønsker du at behandle?\n1. Rediger barn\n2. Tilføj barn\n3. Slet barn\n" +
                            "4. Se liste over børn");
-        switch(getInt()) {
+        switch(InputHelper.getOptionFromUser(1,5)) {
             case 1:
                 System.out.println("Hvilket barn ønsker du at redigere?");
                 //TODO print liste over børn til at redigere
-                //Barn.redigerBarn(redigeringsValg);
+                int[] index = new int[1];
+                Barn.redigerBarn(Barn.selectBarn(listB, index), listF, index);
                 break;
             case 2:
-                Familie nyFamilie = Familie.opretFamilie();
+                Familie nyFamilie = Familie.opretFamilie(listB, listF, listKP);
                 System.out.println(nyFamilie.toString());
                 //gem nyFamilie i familie objekt
                 break;
@@ -65,7 +66,7 @@ public class Menu {
                 break;
             default:
                 System.out.println("Input var ikke en mulig selektion.");
-                indskrivData(listB, listF);
+                indskrivData(listB, listF, listKP);
         }
     }
 

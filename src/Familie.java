@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class Familie {
     private Barn barn;
@@ -24,10 +25,10 @@ public class Familie {
         this.kontakt3 = kontakt3;
     }
 
-    public static Familie opretFamilie()throws FileNotFoundException {
+    public static Familie opretFamilie(ArrayList<Barn> listB,ArrayList<Familie> listF,ArrayList<Kontaktperson> listKP)throws FileNotFoundException {
         Barn nytBarn = Barn.opretNytBarn();
         System.out.println("Der skal nu tilføjes en kontaktperson til "+nytBarn.getFornavn()+" "+nytBarn.getEfternavn()+".");
-        Kontaktperson kontakt1 = Kontaktperson.skabNyKontaktperson();
+        Kontaktperson kontakt1 = Kontaktperson.skabNyKontaktperson(listKP);
         System.out.println("Skal der tilføjes flere kontaktpersoner til "+nytBarn.getFornavn()+" "+nytBarn.getEfternavn()+"?"+
                            "\n1. Ja\n2. Nej");
         if(Menu.getInt() == 2) {
@@ -35,7 +36,7 @@ public class Familie {
            FileHandler.loadFamilieToDisk(temp);
             return temp;
         } else {
-            Kontaktperson kontakt2 = Kontaktperson.skabNyKontaktperson();
+            Kontaktperson kontakt2 = Kontaktperson.skabNyKontaktperson(listKP);
             System.out.println("Skal der tilføjes flere kontaktpersoner til "+nytBarn.getFornavn()+" "+nytBarn.getEfternavn()+"?"+
                                "\n1. Ja\n2. Nej");
             if(Menu.getInt() == 2) {
@@ -43,7 +44,7 @@ public class Familie {
                 FileHandler.loadFamilieToDisk(temp);
                     return temp;
             } else {
-                Kontaktperson kontakt3 = Kontaktperson.skabNyKontaktperson();
+                Kontaktperson kontakt3 = Kontaktperson.skabNyKontaktperson(listKP);
                 Familie temp = new Familie(nytBarn, kontakt1, kontakt2, kontakt3);
                 FileHandler.loadFamilieToDisk(temp);
                     return temp;

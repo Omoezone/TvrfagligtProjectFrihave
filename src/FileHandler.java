@@ -13,81 +13,6 @@ public class FileHandler {
         }
     }
 
-    /*public static void loadFamilieToDisk(Familie familie) throws FileNotFoundException{
-        PrintStream output = new PrintStream(new File("FamilieData.txt"));
-            output.println(familie.toFile());
-    }*/
-
-    /*public static void loadKontaktPersonToDisk(ArrayList<Kontaktperson> listKP) throws FileNotFoundException {
-        PrintStream output = new PrintStream(new File("KontaktPersonData.txt"));
-        for(int i = 0; i < listKP.size(); i++) {
-            output.println(listKP.get(i).toFile());
-        }
-    }*/
-
-
-    /*public static void loadBarnData() throws IOException {
-        BufferedReader buff = new BufferedReader(new FileReader("src/BarnData.txt"));
-        ArrayList<String> read = new ArrayList<>();
-        Scanner input = new Scanner(new File("src/BarnData.txt"));
-        while(input.hasNext()) {
-            String fornavn = input.next();
-            String efternavn = input.next();
-            String cprNummer = input.next();
-
-            Barn temp = new Barn(fornavn, efternavn, cprNummer);
-            listB.add(temp);
-        }
-    }*/
-
-    /*public static ArrayList<Kontaktperson> loadKontaktPersonFromDisk()throws FileNotFoundException {
-        ArrayList<Kontaktperson> listKP = new ArrayList<>();
-        Scanner input = new Scanner(new File("src/kontaktpersonData.txt")).useDelimiter("|");
-        while(input.hasNextLine()) {
-            String fornavn = input.next();
-            String efternavn = input.next();
-            String telefon = input.next();
-            String email = input.next();
-
-            Kontaktperson temp = new Kontaktperson(fornavn, efternavn, telefon, email);
-            listKP.add(temp);
-        }
-        return listKP;
-    }*/
-
-    /*public static void readFromMedarbejderData() throws IOException {
-        BufferedReader buff = new BufferedReader(new FileReader("src/MedarbejderData.txt"));
-        ArrayList<String> read = new ArrayList<>();
-        String line = buff.readLine();
-
-        while(line != null) {
-            read.add(line);
-            line = buff.readLine();
-        }
-        
-    }*/
-
-    /*public static ArrayList<Medarbejder> loadMedarbejderFromDisk()throws FileNotFoundException {
-        ArrayList<Medarbejder> listM = new ArrayList<>();
-        Scanner input = new Scanner(new File("src/Medarbejderdata.txt")).useDelimiter("|");
-        while(input.hasNextLine()){
-            String fornavn = input.next();
-            String efternavn = input.next();
-            String arbejdsdag = input.next();
-            String tidsrum = input.next();
-
-            Medarbejder temp = new Medarbejder(fornavn, efternavn, arbejdsdag, tidsrum, listM);
-        }
-        return listM;
-    }*/
-
-    /*public static void loadMedarbejderToDisk(ArrayList<Medarbejder> listM)throws FileNotFoundException {
-        PrintStream output = new PrintStream(new File("MedarbejderData.txt"));
-            for(int i = 0; i < listM.size(); i++) {
-                output.println(listM.get(i).toFile());
-            }
-    }*/
-
     public static void readFromFamilieData(ArrayList<Familie> listF, ArrayList<Barn> listB, ArrayList<Kontaktperson> listKP) throws IOException {
         BufferedReader buff = new BufferedReader(new FileReader("src/FamilieData.txt"));
         ArrayList<String> read = new ArrayList<>();
@@ -125,7 +50,6 @@ public class FileHandler {
             Familie temp = new Familie(barn, kontakt.get(0), kontakt.get(1), kontakt.get(2));
             listF.add(temp);
         }
-
     }
 
     public static Barn barnToObject(String text) {

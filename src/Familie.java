@@ -25,54 +25,59 @@ public class Familie {
         this.kontakt3 = kontakt3;
     }
 
-    public static Familie opretFamilie(ArrayList<Barn> listB,ArrayList<Familie> listF,ArrayList<Kontaktperson> listKP)throws FileNotFoundException {
-        Barn nytBarn = Barn.opretNytBarn();
+    public static void opretFamilie(ArrayList<Barn> listB, ArrayList<Familie> listF, ArrayList<Kontaktperson> listKP)throws FileNotFoundException {
+        Barn nytBarn = Barn.opretNytBarn(listB);
+
         System.out.println("Der skal nu tilføjes en kontaktperson til "+nytBarn.getFornavn()+" "+nytBarn.getEfternavn()+".");
         Kontaktperson kontakt1 = Kontaktperson.skabNyKontaktperson(listKP);
+
         System.out.println("Skal der tilføjes flere kontaktpersoner til "+nytBarn.getFornavn()+" "+nytBarn.getEfternavn()+"?"+
                            "\n1. Ja\n2. Nej");
         if(Menu.getInt() == 2) {
            Familie temp = new Familie(nytBarn, kontakt1);
-           FileHandler.loadFamilieToDisk(temp);
-            return temp;
+           listF.add(temp);
+           FileHandler.loadFamilieToDisk(listF);
+
+
         } else {
             Kontaktperson kontakt2 = Kontaktperson.skabNyKontaktperson(listKP);
             System.out.println("Skal der tilføjes flere kontaktpersoner til "+nytBarn.getFornavn()+" "+nytBarn.getEfternavn()+"?"+
                                "\n1. Ja\n2. Nej");
             if(Menu.getInt() == 2) {
                 Familie temp = new Familie(nytBarn, kontakt1, kontakt2);
-                FileHandler.loadFamilieToDisk(temp);
-                    return temp;
+                listF.add(temp);
+                FileHandler.loadFamilieToDisk(listF);
+
             } else {
                 Kontaktperson kontakt3 = Kontaktperson.skabNyKontaktperson(listKP);
                 Familie temp = new Familie(nytBarn, kontakt1, kontakt2, kontakt3);
-                FileHandler.loadFamilieToDisk(temp);
-                    return temp;
+                listF.add(temp);
+                FileHandler.loadFamilieToDisk(listF);
             }
         }
-
     }
 
+    // Formatere printet så det bliver læsevenligt i filen og for vores fil læser
     public String toFile() {
         if(kontakt2 == null) {
-            return getBarn().getFornavn() + "|" + getBarn().getEfternavn()+ "|" + getBarn().getCprnummer() + "/" + getKontakt1Info();
+            return getBarn().getFornavn() + "," + getBarn().getEfternavn()+ "," + getBarn().getCprnummer() + "/" + getKontakt1Info();
         } else if(kontakt3 == null) {
-            return getBarn().getFornavn() + "|" + getBarn().getEfternavn()+ "|" + getBarn().getCprnummer() + "/\"" + getKontakt1Info() + "\"" + getKontakt2Info();
+            return getBarn().getFornavn() + "," + getBarn().getEfternavn()+ "," + getBarn().getCprnummer() + "/\"" + getKontakt1Info() + "\"" + getKontakt2Info();
         } else {
-            return getBarn().getFornavn() + "|" + getBarn().getEfternavn()+ "|" + getBarn().getCprnummer() + "/\"" + getKontakt1Info()+ "\"" + getKontakt2Info() + "\"" + getKontakt3Info();
+            return getBarn().getFornavn() + "," + getBarn().getEfternavn()+ "," + getBarn().getCprnummer() + "/\"" + getKontakt1Info()+ "\"" + getKontakt2Info() + "\"" + getKontakt3Info();
         }
     }
 
     public String getKontakt1Info() {
-        return getKontakt1().getFornavn() + "|" + getKontakt1().getEfternavn() + "|" + getKontakt1().getTelefon() + "|" + getKontakt1().getEmail();
+        return getKontakt1().getFornavn() + "," + getKontakt1().getEfternavn() + "," + getKontakt1().getTelefon() + "," + getKontakt1().getEmail();
     }
 
     public String getKontakt2Info() {
-        return getKontakt2().getFornavn() + "|" + getKontakt2().getEfternavn() + "|" + getKontakt2().getTelefon() + "|" + getKontakt2().getEmail();
+        return getKontakt2().getFornavn() + "," + getKontakt2().getEfternavn() + "," + getKontakt2().getTelefon() + "," + getKontakt2().getEmail();
     }
 
     public String getKontakt3Info() {
-        return getKontakt3().getFornavn() + "|" + getKontakt3().getEfternavn() + "|" + getKontakt3().getTelefon() + "|" + getKontakt3().getEmail();
+        return getKontakt3().getFornavn() + "," + getKontakt3().getEfternavn() + "," + getKontakt3().getTelefon() + "," + getKontakt3().getEmail();
     }
 
     public String toString() {

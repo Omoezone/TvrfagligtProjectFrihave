@@ -1,14 +1,14 @@
 import java.io.FileNotFoundException;
-import java.sql.SQLOutput;
+//import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
-    public static void menuSelection(ArrayList<Familie> listF, ArrayList<Barn> listB, ArrayList<Medarbejder> listM, ArrayList<Kontaktperson> listKP)throws FileNotFoundException {
+    public static void menuSelection(ArrayList<Familie> listF, ArrayList<Barn> listB, ArrayList<Kontaktperson> listKP)throws FileNotFoundException {
         boolean menuFlag = true;
         while (menuFlag) {
-            System.out.println("Hvad ønsker du at gøre?\n1. Indskriv data\n2. Opret vagtplan\n" +
-                               "3. Opret telefonliste\n4. Venteliste for børnehavepladser\n" +
+            System.out.println("Hvad ønsker du at gøre?\n1. Børn\n2. Vagtplan\n" +
+                               "3. Telefonliste\n4. Venteliste for børnehavepladser\n" +
                                "5. Kontaktpersoners oplysninger");
             switch(InputHelper.getOptionFromUser(1,5)) {
                 case 1:
@@ -16,7 +16,7 @@ public class Menu {
                     break;
                 case 2:
                     //TODO opretVagtplan();
-                    Medarbejder.menuMedarbejderVagtplan(listM);
+                    //Medarbejder.menuMedarbejderVagtplan(listM);
                     break;
                 case 3:
                     //TODO opretTelefonliste();
@@ -30,7 +30,7 @@ public class Menu {
                     break;
                 default:
                     System.out.println("Input var ikke en mulig selektion.");
-                    menuSelection(listF, listB, listM, listKP);
+                    menuSelection(listF, listB, listKP);
             }
 
             //om menuen skal kores igen
@@ -52,9 +52,7 @@ public class Menu {
                 Barn.redigerBarn(Barn.selectBarn(listB, index), listF, index);
                 break;
             case 2:
-                Familie nyFamilie = Familie.opretFamilie(listB, listF, listKP);
-                System.out.println(nyFamilie.toString());
-                //gem nyFamilie i familie objekt
+                Familie.opretFamilie(listB, listF, listKP);
                 break;
             case 3:
                 //TODO sletBarn();

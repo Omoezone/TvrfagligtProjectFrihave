@@ -41,7 +41,7 @@ public class Kontaktperson {
         console.nextLine();
 
         Kontaktperson temp = new Kontaktperson(navn, efternavn, telefon, email, listKP);
-        return temp;
+            return temp;
     }
 
     public String toString() {

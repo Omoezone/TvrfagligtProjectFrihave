@@ -1,8 +1,8 @@
-Arne|Jensen|010115-5555
-Sebastian|Sørensen|050816-1987
-Bjarne|Troelsen|020814-4067
-Bendt|Horn|151018-4409
-Kaj|Anker|160516-3309
-Eline|Lorenzen|310116-4432
-Emma|Antonsen|071216-5556
-Klara|Kristoffersen|051217-2452
+Arne|Jensen|0101155555
+Sebastian|Sørensen|0508161987
+Bjarne|Troelsen|0208144067
+Bendt|Horn|1510184409
+Kaj|Anker|1605163309
+Eline|Lorenzen|3101164432
+Emma|Antonsen|0712165556
+Klara|Kristoffersen|0512172452

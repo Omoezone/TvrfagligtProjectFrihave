@@ -32,7 +32,7 @@ public class Barn {
     }
 
     public String toFile() {
-        return fornavn + "|" + efternavn + "|" + cprnummer;
+        return fornavn + "," + efternavn + "," + cprnummer;
     }
 
     public void setCprnummer(String cprnummer) {
@@ -54,13 +54,7 @@ public class Barn {
         listB.add(this);
     }
 
-    public static void createNyBarn(ArrayList<Barn> listB, ArrayList<Barn> listVL) {
-        if(listB.size() <= 99) {
-
-        }
-    }
-
-    public static Barn opretNytBarn(){
+    public static Barn opretNytBarn(ArrayList<Barn> listB){
         String fornavn;
         String efternavn;
         String cprnummer;
@@ -73,9 +67,9 @@ public class Barn {
 
         System.out.println("Hvad er barnets CPR nummer? Skriv uden mellemrum eller tegn");
         cprnummer = input.next();
-        Barn barn = new Barn(fornavn, efternavn, cprnummer);
+        Barn barn = new Barn(fornavn, efternavn, cprnummer, listB);
         System.out.println("Oprettet barn: \n" + barn.toString());
-        return barn;
+            return barn;
     }
 
     public static void redigerBarn(Barn b, ArrayList<Familie> listF, int[] index){
@@ -174,9 +168,10 @@ public class Barn {
 
     }
 
-    public String getFuldenavn(){
+    /*public String getFuldenavn(){
         return fornavn + " " + efternavn;
-    }
+    }*/
+
     /*public String toString() {
         return "Barnets fuldenavn: " + getFuldenavn() + "\nBarnets CPR: " + cprnummer;
     }*/

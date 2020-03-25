@@ -56,15 +56,24 @@ public class Familie {
             }
         }
     }
+    public int getSize() {
+        if(kontakt2 == null) {
+            return 2;
+        } else if(kontakt2 == null) {
+            return 3;
 
+        }else {
+            return 4;
+        }
+    }
     // Formatere printet så det bliver læsevenligt i filen og for vores fil læser
     public String toFile() {
         if(kontakt2 == null) {
             return getBarn().getFornavn() + "," + getBarn().getEfternavn()+ "," + getBarn().getCprnummer() + "/" + getKontakt1Info();
         } else if(kontakt3 == null) {
-            return getBarn().getFornavn() + "," + getBarn().getEfternavn()+ "," + getBarn().getCprnummer() + "/\"" + getKontakt1Info() + "\"" + getKontakt2Info();
+            return getBarn().getFornavn() + "," + getBarn().getEfternavn()+ "," + getBarn().getCprnummer() + "/" + getKontakt1Info() + "\"" + getKontakt2Info();
         } else {
-            return getBarn().getFornavn() + "," + getBarn().getEfternavn()+ "," + getBarn().getCprnummer() + "/\"" + getKontakt1Info()+ "\"" + getKontakt2Info() + "\"" + getKontakt3Info();
+            return getBarn().getFornavn() + "," + getBarn().getEfternavn()+ "," + getBarn().getCprnummer() + "/" + getKontakt1Info()+ "\"" + getKontakt2Info() + "\"" + getKontakt3Info();
         }
     }
 

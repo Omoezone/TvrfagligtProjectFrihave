@@ -142,7 +142,7 @@ public class Barn {
     }
 
     //Author Michael Berko
-    public static void deleteBarn(ArrayList<Barn> listB) {
+    public static void deleteBarn(ArrayList<Barn> listB, ArrayList<Familie> listF) {
         Scanner console = new Scanner(System.in);
         System.out.println("Hvilket barn kunne du tænke dig at slette?");
         System.out.println("Liste of eksisterende børn");
@@ -151,15 +151,17 @@ public class Barn {
             }
         int dValg = console.nextInt() - 1;
         System.out.println("Du har valgt at fjerne " + listB.get(dValg).getFornavn() + " " + listB.get(dValg).getEfternavn());
+        System.out.println("Ved at foretage denne operation vil du fjerne familien for barnet også");
         System.out.println("Er du sikker?");
         String sValg = console.next();
             if(sValg.equalsIgnoreCase("Ja")) {
                 listB.remove(dValg);
+                listF.remove(dValg);
             }
     }
 
     public static void printBarnListe(ArrayList<Barn> listB) {
-        System.out.printf("Barn Liste");
+        System.out.printf("Barn Liste %n");
 
             for( int i = 0; i < listB.size(); i++) {
                 System.out.print(listB.get(i));

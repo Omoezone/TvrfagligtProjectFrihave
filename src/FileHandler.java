@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class FileHandler {
 
     public static void loadFamilieToDisk(ArrayList<Familie> listF) throws FileNotFoundException {
-        PrintStream output = new PrintStream(new File("FamilieData.txt"));
+        PrintStream output = new PrintStream(new File("src/FamilieData.txt"));
         for (int i = 0; i < listF.size(); i++) {
             output.println(listF.get(i).toFile());
         }
@@ -62,7 +62,7 @@ public class FileHandler {
 
     }*/
 
-    /*public static ArrayList<Medarbejder> loadMedarbejderFromDisk()throws FileNotFoundException {
+    public static ArrayList<Medarbejder> loadMedarbejderFromDisk()throws FileNotFoundException {
         ArrayList<Medarbejder> listM = new ArrayList<>();
         Scanner input = new Scanner(new File("src/Medarbejderdata.txt")).useDelimiter("|");
         while(input.hasNextLine()){
@@ -74,14 +74,14 @@ public class FileHandler {
             Medarbejder temp = new Medarbejder(fornavn, efternavn, arbejdsdag, tidsrum, listM);
         }
         return listM;
-    }*/
+    }
 
-    /*public static void loadMedarbejderToDisk(ArrayList<Medarbejder> listM)throws FileNotFoundException {
+    public static void loadMedarbejderToDisk(ArrayList<Medarbejder> listM)throws FileNotFoundException {
         PrintStream output = new PrintStream(new File("MedarbejderData.txt"));
             for(int i = 0; i < listM.size(); i++) {
                 output.println(listM.get(i).toFile());
             }
-    }*/
+    }
 
     public static void readFromFamilieData(ArrayList<Familie> listF, ArrayList<Barn> listB, ArrayList<Kontaktperson> listKP) throws IOException {
         BufferedReader buff = new BufferedReader(new FileReader("src/FamilieData.txt"));

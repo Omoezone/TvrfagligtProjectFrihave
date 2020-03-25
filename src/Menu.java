@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
-    public static void menuSelection(ArrayList<Familie> listF, ArrayList<Barn> listB, ArrayList<Kontaktperson> listKP)throws FileNotFoundException {
+    public static void menuSelection(ArrayList<Familie> listF, ArrayList<Barn> listB, ArrayList<Kontaktperson> listKP, ArrayList<Medarbejder> listM)throws FileNotFoundException {
         boolean menuFlag = true;
         while (menuFlag) {
             System.out.println("Hvad ønsker du at gøre?\n1. Børn\n2. Vagtplan\n" +
                                "3. Telefonliste\n4. Venteliste for børnehavepladser\n" +
-                               "5. Kontaktpersoners oplysninger");
-            switch(InputHelper.getOptionFromUser(1,5)) {
+                               "5. Kontaktpersoners oplysninger \n6. Afslutte programmet");
+            switch(InputHelper.getOptionFromUser(1,6)) {
                 case 1:
                     indskrivData(listB, listF, listKP);
                     break;
                 case 2:
                     //TODO opretVagtplan();
-                    //Medarbejder.menuMedarbejderVagtplan(listM);
+                    Medarbejder.menuMedarbejderVagtplan(listM);
                     break;
                 case 3:
                     //TODO opretTelefonliste();
@@ -26,14 +26,20 @@ public class Menu {
                     break;
                 case 5:
                     //TODO kontaktpersoner();
-
+                    Kontaktperson.kontaktPersonMenu(listF, listKP);
+                    break;
+                case 6:
+                    FileHandler.loadFamilieToDisk(listF);
+                    FileHandler.loadMedarbejderToDisk(listM);
+                    System.out.println("Programmet lukker og alle ændring er gemt...");
+                    menuFlag = false;
                     break;
                 default:
                     System.out.println("Input var ikke en mulig selektion.");
-                    menuSelection(listF, listB, listKP);
+                    menuSelection(listF, listB, listKP, listM);
             }
 
-            //om menuen skal kores igen
+            //om menuen skal køres igen
             System.out.println("Ønsker du at at gøre andet?\n1. Ja\n2. Nej");
             if (getInt() == 2) {
                 menuFlag = false;

@@ -35,14 +35,15 @@ public class Kontaktperson {
 
         System.out.print("Venligst indtast "+efternavn+"'s telefonnummer: ");
         String telefon = console.next();
-        console.nextLine(); //consume line break input fra ovenstaaende
+        console.nextLine(); //consume line break input fra ovenstående
 
         System.out.print("Venligst indtast "+efternavn+"'s email: ");
         String email = console.next();
         console.nextLine();
 
         Kontaktperson temp = new Kontaktperson(navn, efternavn, telefon, email, listKP);
-            return temp;
+        System.out.println("Oprettet kontaktperson: \n" + temp.toString());
+        return temp;
     }
 
 

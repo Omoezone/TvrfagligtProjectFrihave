@@ -34,20 +34,16 @@ public class Familie {
         System.out.println("Skal der tilføjes flere kontaktpersoner til "+nytBarn.getFornavn()+" "+nytBarn.getEfternavn()+"?"+
                            "\n1. Ja\n2. Nej");
         if(Menu.getInt() == 2) {
-           Familie temp = new Familie(nytBarn, kontakt1);
-           listF.add(temp);
-
+           listF.add(new Familie(nytBarn, kontakt1));
         } else {
             Kontaktperson kontakt2 = Kontaktperson.skabNyKontaktperson(listKP);
             System.out.println("Skal der tilføjes flere kontaktpersoner til "+nytBarn.getFornavn()+" "+nytBarn.getEfternavn()+"?"+
                                "\n1. Ja\n2. Nej");
             if(Menu.getInt() == 2) {
-                Familie temp = new Familie(nytBarn, kontakt1, kontakt2);
-                listF.add(temp);
+                listF.add(new Familie(nytBarn, kontakt1, kontakt2));
             } else {
                 Kontaktperson kontakt3 = Kontaktperson.skabNyKontaktperson(listKP);
-                Familie temp = new Familie(nytBarn, kontakt1, kontakt2, kontakt3);
-                listF.add(temp);
+                listF.add(new Familie(nytBarn, kontakt1, kontakt2, kontakt3));
             }
         }
         FileHandler.saveFamilieToDisk(listF);

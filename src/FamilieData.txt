@@ -1,2 +1,3 @@
 Mikael,Berko,34567890/mi,Dyreborg,7372398398,eghthtyh"Lukas,Dyreborg,7372398398,eghthtyh
 William,Omø,1234124124/Martin,Omø,40293892,makr@mail.dk
+Steen,Hobbes,121217-5655/Martin,Omø,40293892,makr@mail.dk

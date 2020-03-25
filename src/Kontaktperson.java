@@ -27,24 +27,36 @@ public class Kontaktperson {
 
     public static Kontaktperson skabNyKontaktperson(ArrayList<Kontaktperson> listKP) {
         Scanner console = new Scanner(System.in);
-        System.out.print("Venligst indtast kontaktpersonens fulde navn(Fornavn og Efternavn): ");
-        String navn = console.nextLine();
-        //separerer fornavn og efternavn efter sidste mellemrum
-        String efternavn = navn.substring(navn.lastIndexOf(" ")+1);
-        navn = navn.substring(0, navn.lastIndexOf(" "));
 
-        System.out.print("Venligst indtast "+efternavn+"'s telefonnummer: ");
-        String telefon = console.next();
-        console.nextLine(); //consume line break input fra ovenstående
+        System.out.println("Findes kontaktpersonen allerede i systemet?\n1. Ja\n2. Nej");
+        if(InputHelper.getIntFromUser() == 1) {
+            System.out.println("Her er listen over eksisterende kontaktpersoner:");
+            for (int i = 0; i < listKP.size(); i++) {
+                System.out.println(i+1+". "+ listKP.get(i).getFullNavn());
+            }
+            System.out.println("Venligst indtast tallet for ønskede kontaktperson.");
+            return listKP.get(InputHelper.getIntFromUser()-1);
+        } else {
+            System.out.print("Venligst indtast kontaktpersonens fulde navn(Fornavn og Efternavn): ");
+            String navn = console.nextLine();
+            //separerer fornavn og efternavn efter sidste mellemrum
+            String efternavn = navn.substring(navn.lastIndexOf(" ") + 1);
+            navn = navn.substring(0, navn.lastIndexOf(" "));
 
-        System.out.print("Venligst indtast "+efternavn+"'s email: ");
-        String email = console.next();
-        console.nextLine();
+            System.out.print("Venligst indtast " + efternavn + "'s telefonnummer: ");
+            String telefon = console.next();
+            console.nextLine(); //consume line break input fra ovenstående
 
-        Kontaktperson temp = new Kontaktperson(navn, efternavn, telefon, email, listKP);
-        System.out.println("Oprettet kontaktperson: \n" + temp.toString());
-        return temp;
+            System.out.print("Venligst indtast " + efternavn + "'s email: ");
+            String email = console.next();
+            console.nextLine();
+
+            Kontaktperson temp = new Kontaktperson(navn, efternavn, telefon, email, listKP);
+            System.out.println("Oprettet kontaktperson: \n" + temp.toString());
+            return temp;
+        }
     }
+
 
 
     public String getFullNavn() {

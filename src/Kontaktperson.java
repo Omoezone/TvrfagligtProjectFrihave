@@ -27,7 +27,7 @@ public class Kontaktperson {
 
     public static Kontaktperson skabNyKontaktperson(ArrayList<Kontaktperson> listKP) {
         Scanner console = new Scanner(System.in);
-        System.out.print("Venligst indtast kontaktpersonens navn: ");
+        System.out.print("Venligst indtast kontaktpersonens fulde navn(Fornavn og Efternavn): ");
         String navn = console.nextLine();
         //separerer fornavn og efternavn efter sidste mellemrum
         String efternavn = navn.substring(navn.lastIndexOf(" ")+1);
@@ -57,7 +57,7 @@ public class Kontaktperson {
                 System.out.println(1 + i + ". " + listKP.get(i));
             }
             int valg = console.nextInt() - 1;
-        System.out.println("Du har valgt at ændre på " + listKP.get(valg) + ", hvad vil du gerne ændre?");
+        System.out.println("Du har valgt at ændre på: \n" + listKP.get(valg) + "\n\nHvad vil du gerne ændre?\n");
         System.out.println("1. for fornavn \n2. for efternavn \n3. for telefon");
         int rValg = console.nextInt();
             switch(rValg) {

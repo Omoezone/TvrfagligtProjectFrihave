@@ -7,8 +7,8 @@ public class FileHandler {
 
     public static void saveFamilieToDisk(ArrayList<Familie> listF) throws FileNotFoundException {
         PrintStream output = new PrintStream(new File("src/FamilieData.txt"));
-        for (int i = 0; i < listF.size(); i++) {
-            output.println(listF.get(i).toFile());
+        for (Familie familie : listF) {
+            output.println(familie.toFile());
         }
     }
 
@@ -93,8 +93,8 @@ public class FileHandler {
             line = buff.readLine();
         }
 
-        for (int i = 0; i < read.size(); i++) {
-            seperateChildrenFromAdults(read.get(i), listF, listB, listKP);
+        for (String s : read) {
+            seperateChildrenFromAdults(s, listF, listB, listKP);
         }
     }
 
@@ -105,10 +105,10 @@ public class FileHandler {
         Barn barn = barnToObject(cut[0]);
         listB.add(barn);
         String[] adult = cut[1].split("\"");
-        for (int i = 0; i < adult.length; i++) {
-             Kontaktperson kP = kontaktToObject(adult[i]);
-             kontakt.add(kP);
-             listKP.add(kP);
+        for (String s : adult) {
+            Kontaktperson kP = kontaktToObject(s);
+            kontakt.add(kP);
+            listKP.add(kP);
         }
         if (kontakt.size() == 1) {
             Familie temp = new Familie(barn, kontakt.get(0));
@@ -120,21 +120,15 @@ public class FileHandler {
             Familie temp = new Familie(barn, kontakt.get(0), kontakt.get(1), kontakt.get(2));
             listF.add(temp);
         }
-
     }
 
     public static Barn barnToObject(String text) {
         String[] barn1 = text.split(",");
-
-        Barn temp = new Barn(barn1[0], barn1[1], barn1[2]);
-
-            return temp;
+        return new Barn(barn1[0], barn1[1], barn1[2]);
     }
 
     public static Kontaktperson kontaktToObject(String text) {
         String[] kontakt = text.split(",");
-
-        Kontaktperson temp = new Kontaktperson(kontakt[0], kontakt[1], kontakt[2], kontakt[3]);
-            return temp;
+        return new Kontaktperson(kontakt[0], kontakt[1], kontakt[2], kontakt[3]);
     }
 }

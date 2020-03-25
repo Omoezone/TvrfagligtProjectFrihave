@@ -27,7 +27,7 @@ public class Kontaktperson {
 
     public static Kontaktperson skabNyKontaktperson(ArrayList<Kontaktperson> listKP) {
         Scanner console = new Scanner(System.in);
-        System.out.print("Venligst indtast kontaktpersonens navn: ");
+        System.out.print("Venligst indtast kontaktpersonens fulde navn(Fornavn og Efternavn): ");
         String navn = console.nextLine();
         //separerer fornavn og efternavn efter sidste mellemrum
         String efternavn = navn.substring(navn.lastIndexOf(" ")+1);

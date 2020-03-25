@@ -52,7 +52,7 @@ public class Familie {
         }
         FileHandler.saveFamilieToDisk(listF);
     }
-    
+
     public int getSize() {
         if(kontakt2 == null) {
             return 2;

@@ -55,7 +55,7 @@ public class Barn {
         String efternavn = fornavn.substring(fornavn.lastIndexOf(" ")+1);
         fornavn = fornavn.substring(0, fornavn.lastIndexOf(" "));
 
-        System.out.println("Hvad er barnets CPR nummer? Skriv uden mellemrum eller tegn");
+        System.out.println("Hvad er barnets CPR nummer? Skriv som XXXXXX-XXXX.");
         String cprnummer = input.next();
         Barn barn = new Barn(fornavn, efternavn, cprnummer, listB);
         System.out.println("Oprettet barn: \n" + barn.toString());

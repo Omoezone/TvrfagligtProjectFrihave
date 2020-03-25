@@ -50,6 +50,8 @@ public class Menu {
                 }
             }
         }
+        FileHandler.loadFamilieToDisk(listF);
+        FileHandler.loadMedarbejderToDisk(listM);
     }
 
     public static void indskrivData(ArrayList<Barn> listB, ArrayList<Familie> listF, ArrayList<Kontaktperson> listKP,ArrayList<Medarbejder> listM)throws FileNotFoundException {

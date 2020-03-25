@@ -111,14 +111,11 @@ public class FileHandler {
             listKP.add(kP);
         }
         if (kontakt.size() == 1) {
-            Familie temp = new Familie(barn, kontakt.get(0));
-            listF.add(temp);
+            listF.add(new Familie(barn, kontakt.get(0)));
         } else if (kontakt.size() == 2) {
-            Familie temp = new Familie(barn, kontakt.get(0), kontakt.get(1));
-            listF.add(temp);
+            listF.add(new Familie(barn, kontakt.get(0), kontakt.get(1)));
         } else if (kontakt.size() == 3) {
-            Familie temp = new Familie(barn, kontakt.get(0), kontakt.get(1), kontakt.get(2));
-            listF.add(temp);
+            listF.add(new Familie(barn, kontakt.get(0), kontakt.get(1), kontakt.get(2)));
         }
     }
 

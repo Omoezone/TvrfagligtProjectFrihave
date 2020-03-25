@@ -155,7 +155,7 @@ public class Barn {
         System.out.printf("Barn Liste %n");
 
             for( int i = 0; i < listB.size(); i++) {
-                System.out.print(listB.get(i));
+                System.out.println(listB.get(i)+"\n");
             }
 
 

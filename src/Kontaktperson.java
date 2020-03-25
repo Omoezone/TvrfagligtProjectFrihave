@@ -62,7 +62,7 @@ public class Kontaktperson {
         int rValg = console.nextInt();
             switch(rValg) {
                 case 1:
-                    System.out.println("fornavn for påglædende er " + listKP.get(valg).getFornavn());
+                    System.out.println("fornavn for pågældende er " + listKP.get(valg).getFornavn());
                     System.out.println("Hvad ønsker du at ændre fornavn til?");
                     String newFornavn = console.next();
                     //Her sker der noget smart, ved at vi bruge en if/else if/else if, så er der kun en mulighed, derfor tester vi efter om,
@@ -83,7 +83,7 @@ public class Kontaktperson {
                     break;
 
                 case 2:
-                    System.out.println("Efternavnet for påglædende er " + listKP.get(valg).getEfternavn());
+                    System.out.println("Efternavnet for pågældende er " + listKP.get(valg).getEfternavn());
                     System.out.println("Hvad ønsker du at ændre efternavn til?");
                     String newEfternavn = console.next();
                     //Her gør vi det samme som for fornavn, derfor undlader jeg at gentage mig selv.
@@ -104,7 +104,7 @@ public class Kontaktperson {
 
                 case 3:
                     System.out.println("Telefon for pågældende er " + listKP.get(valg).getTelefon());
-                    System.out.println("Hvad ønsker du att ændre eftternavn til?");
+                    System.out.println("Hvad ønsker du at ændre eftternavn til?");
                     String newTelefon = console.next();
                     for(int i = 0; i < listF.size(); i ++) {
                         if(listF.get(i).getKontakt1().equals(listKP.get(valg))) {
@@ -195,7 +195,7 @@ public class Kontaktperson {
                     }
                 }
                 System.out.println(listF);
-                FileHandler.loadFamilieToDisk(listF);
+                FileHandler.saveFamilieToDisk(listF);
 
 
                 break;

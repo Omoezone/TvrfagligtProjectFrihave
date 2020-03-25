@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class FileHandler {
 
-    public static void loadFamilieToDisk(ArrayList<Familie> listF) throws FileNotFoundException {
+    public static void saveFamilieToDisk(ArrayList<Familie> listF) throws FileNotFoundException {
         PrintStream output = new PrintStream(new File("src/FamilieData.txt"));
         for (int i = 0; i < listF.size(); i++) {
             output.println(listF.get(i).toFile());

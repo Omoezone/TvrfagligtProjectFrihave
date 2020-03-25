@@ -32,7 +32,7 @@ public class Menu {
                     Kontaktperson.kontaktPersonMenu(listF, listKP);
                     break;
                 case 6:
-                    FileHandler.loadFamilieToDisk(listF);
+                    FileHandler.saveFamilieToDisk(listF);
                     FileHandler.loadMedarbejderToDisk(listM);
                     System.out.println("Programmet lukker og alle ændring er gemt...");
                     menuFlag = false;
@@ -50,7 +50,7 @@ public class Menu {
                 }
             }
         }
-        FileHandler.loadFamilieToDisk(listF);
+        FileHandler.saveFamilieToDisk(listF);
         FileHandler.loadMedarbejderToDisk(listM);
     }
 

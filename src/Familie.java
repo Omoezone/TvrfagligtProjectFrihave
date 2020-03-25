@@ -36,7 +36,7 @@ public class Familie {
         if(Menu.getInt() == 2) {
            Familie temp = new Familie(nytBarn, kontakt1);
            listF.add(temp);
-           FileHandler.loadFamilieToDisk(listF);
+           FileHandler.saveFamilieToDisk(listF);
 
 
         } else {
@@ -46,13 +46,13 @@ public class Familie {
             if(Menu.getInt() == 2) {
                 Familie temp = new Familie(nytBarn, kontakt1, kontakt2);
                 listF.add(temp);
-                FileHandler.loadFamilieToDisk(listF);
+                FileHandler.saveFamilieToDisk(listF);
 
             } else {
                 Kontaktperson kontakt3 = Kontaktperson.skabNyKontaktperson(listKP);
                 Familie temp = new Familie(nytBarn, kontakt1, kontakt2, kontakt3);
                 listF.add(temp);
-                FileHandler.loadFamilieToDisk(listF);
+                FileHandler.saveFamilieToDisk(listF);
             }
         }
     }

@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -64,20 +65,19 @@ public class Barn {
             return barn;
     }
 
-    public static void redigerBarn(Barn b, ArrayList<Familie> listF, ArrayList<Barn> listB, ArrayList<Kontaktperson> listKP, ArrayList<Medarbejder> listM, int[] index) throws IOException {
-        System.out.println("Hvad vil du ændre? \n1. Fornavn\n2. Efternavn\n3. CPR nummer\n\n0. Tilbage til hovedmenuen");
+    public static void redigerBarn(Barn b, ArrayList<Familie> listF, ArrayList<Barn> listB, ArrayList<Kontaktperson> listKP, ArrayList<Medarbejder> listM, int[] index) throws FileNotFoundException {
+        System.out.println("Hvad vil du ændre? \n1. Fornavn\n2. Efternavn\n3. CPR nummer\n4. Tilbage til hovedmenuen");
         Scanner input = new Scanner(System.in);
 
-        int redigerSelection = InputHelper.getOptionFromUser(0,3);
+        int redigerSelection = InputHelper.getOptionFromUser(1,4);
 
         switch (redigerSelection){
-            case 0:
-                break;
+
             case 1:
                 System.out.println("Nuværende fornavn: " + b.getFornavn() + "\nHvad er det nye fornavn?");
                 b.setFornavn(input.next());
 
-                System.out.println("Fornavn sat til: " + b.getFornavn() + "\n\nVil du ændre andet? 1. Ja\n0. Nej");
+                System.out.println("Fornavn sat til: " + b.getFornavn() + "\n\nVil du ændre andet? \n1. Ja\n2. Nej");
                 int redigerMere = input.nextInt();
                 if(redigerMere == 1){
                     redigerBarn(b,listF, listB, listKP,listM, index);
@@ -88,7 +88,7 @@ public class Barn {
                 System.out.println("Nuværnde efternavn: " + b.getEfternavn() + "\nHvad er det nye efternavn?");
                 b.setEfternavn(input.next());
 
-                System.out.println("Efternavn sat til: " + b.getEfternavn() + "\n\nVil du ændre andet? 1. Ja\n0. Nej");
+                System.out.println("Efternavn sat til: " + b.getEfternavn() + "\n\nVil du ændre andet? \n1. Ja\n2. Nej");
                 redigerMere = input.nextInt();
                 if(redigerMere == 1){
                     redigerBarn(b,listF, listB, listKP,listM, index);
@@ -99,7 +99,7 @@ public class Barn {
                 System.out.println("Nuværende CPR nummer: "+ b.getCprnummer() + "Hvad er det nye CPR nummer?");
                 b.setCprnummer(input.next());
 
-                System.out.println("CPR nummer er sat til: " + b.getCprnummer() + "\n\nVil du ændre andet? 1. Ja\n0. Nej");
+                System.out.println("CPR nummer er sat til: " + b.getCprnummer() + "\n\nVil du ændre andet? \n1. Ja\n2. Nej");
                 redigerMere = input.nextInt();
                 if(redigerMere == 1){
                     redigerBarn(b,listF, listB, listKP,listM, index);
@@ -123,13 +123,6 @@ public class Barn {
         int sValg = InputHelper.getOptionFromUser(1,listB.size()) -1;
         index[0] = sValg;
         System.out.println("Du har valgt at tage fat i " + listB.get(sValg).getFornavn() + " " + listB.get(sValg).getEfternavn());
-        System.out.println("Er du sikker?");
-        String valg = console.next();
-            if(valg.equalsIgnoreCase("ja")) {
-                return listB.get(sValg);
-            } else {
-                selectBarn(listB, index);
-            }
 
             return listB.get(sValg);
     }

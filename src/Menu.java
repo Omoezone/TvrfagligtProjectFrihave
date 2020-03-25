@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
-    public static void menuSelection(ArrayList<Familie> listF, ArrayList<Barn> listB, ArrayList<Kontaktperson> listKP, ArrayList<Medarbejder> listM)throws IOException {
+    public static void menuSelection(ArrayList<Familie> listF, ArrayList<Barn> listB,
+                                     ArrayList<Kontaktperson> listKP,
+                                     ArrayList<Medarbejder> listM)throws FileNotFoundException {
         boolean menuFlag = true;
         while (menuFlag) {
-            System.out.println("Hvad ønsker du at gøre?\n1. Børn\n2. Vagtplan\n" +
+            System.out.println("Vælg punkt?\n1. Børn\n2. Vagtplan\n" +
                                "3. Telefonliste\n4. Venteliste for børnehavepladser\n" +
                                "5. Kontaktpersoners oplysninger \n6. Afslutte programmet");
             switch(InputHelper.getOptionFromUser(1,6)) {
@@ -50,7 +52,7 @@ public class Menu {
         }
     }
 
-    public static void indskrivData(ArrayList<Barn> listB, ArrayList<Familie> listF, ArrayList<Kontaktperson> listKP,ArrayList<Medarbejder> listM)throws IOException {
+    public static void indskrivData(ArrayList<Barn> listB, ArrayList<Familie> listF, ArrayList<Kontaktperson> listKP,ArrayList<Medarbejder> listM)throws FileNotFoundException {
         System.out.println("Hvilken data ønsker du at behandle?\n1. Rediger barn\n2. Tilføj barn\n3. Slet barn\n" +
                            "4. Se liste over børn \n5. Gå tilbage til menu");
         switch(InputHelper.getOptionFromUser(1,5)) {
@@ -82,7 +84,6 @@ public class Menu {
 
     public static int getInt() {
         Scanner console = new Scanner(System.in);
-        System.out.print("Indtast venligst tallet for det ønskede menupunkt: ");
         while(!console.hasNextInt()) {
             System.out.println("Input var ikke et tal.");
             System.out.print("Indtast venligst tallet for det ønskede menupunkt: ");

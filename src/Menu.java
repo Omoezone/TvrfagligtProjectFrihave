@@ -40,9 +40,11 @@ public class Menu {
             }
 
             //om menuen skal køres igen
-            System.out.println("Ønsker du at at gøre andet?\n1. Ja\n2. Nej");
-            if (getInt() == 2) {
-                menuFlag = false;
+            if(menuFlag) {
+                System.out.println("Ønsker du at at gøre andet?\n1. Ja\n2. Nej");
+                if (getInt() == 2) {
+                    menuFlag = false;
+                }
             }
         }
     }
@@ -62,7 +64,7 @@ public class Menu {
                 break;
             case 3:
                 //TODO sletBarn();
-                //Barn.deleteBarn(listB);
+                Barn.deleteBarn(listB,listF);
                 break;
             case 4:
                 //TODO printBarnListe();

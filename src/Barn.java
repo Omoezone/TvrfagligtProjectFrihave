@@ -26,15 +26,6 @@ public class Barn {
         return cprnummer;
     }
 
-
-    public String toString() {
-        return "Fornavn: " + fornavn + "\nEfternavn: " + efternavn + "\nCPR-nummer: " + cprnummer;
-    }
-
-    public String toFile() {
-        return fornavn + "," + efternavn + "," + cprnummer;
-    }
-
     public void setCprnummer(String cprnummer) {
         this.cprnummer = cprnummer;
     }
@@ -60,7 +51,7 @@ public class Barn {
         String cprnummer;
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Venligst indtast barnest navn: ");
+        System.out.print("Venligst indtast barnets fulde navn (Fornavn + Efternavn): ");
         fornavn = input.nextLine();
         efternavn = fornavn.substring(fornavn.lastIndexOf(" ")+1);
         fornavn = fornavn.substring(0, fornavn.lastIndexOf(" "));
@@ -141,18 +132,18 @@ public class Barn {
             return listB.get(sValg);
     }
 
-    //Author Michael Berko
+
     public static void deleteBarn(ArrayList<Barn> listB, ArrayList<Familie> listF) {
         Scanner console = new Scanner(System.in);
         System.out.println("Hvilket barn kunne du tænke dig at slette?");
-        System.out.println("Liste of eksisterende børn");
+        System.out.println("Liste af eksisterende børn");
             for(int i = 0; i < listB.size(); i++) {
                 System.out.println(i + 1 + ". " + listB.get(i).getFornavn() + " " + listB.get(i).getEfternavn());
             }
         int dValg = console.nextInt() - 1;
         System.out.println("Du har valgt at fjerne " + listB.get(dValg).getFornavn() + " " + listB.get(dValg).getEfternavn());
         System.out.println("Ved at foretage denne operation vil du fjerne familien for barnet også");
-        System.out.println("Er du sikker?");
+        System.out.println("Er du sikker? (Ja / Nej)");
         String sValg = console.next();
             if(sValg.equalsIgnoreCase("Ja")) {
                 listB.remove(dValg);
@@ -169,7 +160,13 @@ public class Barn {
 
 
     }
+    public String toString() {
+        return "Fornavn: " + fornavn + "\nEfternavn: " + efternavn + "\nCPR-nummer: " + cprnummer;
+    }
 
+    public String toFile() {
+        return fornavn + "," + efternavn + "," + cprnummer;
+    }
     /*public String getFuldenavn(){
         return fornavn + " " + efternavn;
     }*/

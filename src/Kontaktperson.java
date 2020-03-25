@@ -45,14 +45,6 @@ public class Kontaktperson {
             return temp;
     }
 
-    public String toString() {
-        return "Navn: " + fornavn+" "+efternavn+"\nTelefonnummer: "+telefon+"\nEmail: "+email;
-    }
-
-    public String toFile() {
-        return fornavn + "/n" + efternavn + "/" + telefon + "/n" + email;
-
-    }
 
     public String getFullNavn() {
         return fornavn + " " + efternavn;
@@ -156,7 +148,7 @@ public class Kontaktperson {
 
     public static void kontaktPersonMenu(ArrayList<Familie> listF, ArrayList<Kontaktperson> listKP) throws FileNotFoundException {
         Scanner console = new Scanner(System.in);
-        System.out.println("1. Rediger kontaktperson /n2. Se liste over kontaktpersoner /n3.Slet en kontaktperson /n4. Afslut operation");
+        System.out.println("1. Rediger kontaktperson \n2. Se liste over kontaktpersoner \n3. Slet en kontaktperson \n4. Afslut operation");
         int menuValg = InputHelper.getOptionFromUser(1,5);
         switch(menuValg) {
             case 1:
@@ -187,7 +179,7 @@ public class Kontaktperson {
                     int sletKP = console.nextInt();
                         if(sletKP == 1) {
                             listF.remove(listF.get(dValg).getKontakt1());
-                        } if(sletKP == 2) {
+                        }if(sletKP == 2) {
                             listF.remove(listF.get(dValg).getKontakt2());
                         }
                 } if(listF.get(dValg).getSize() == 4) {
@@ -202,6 +194,7 @@ public class Kontaktperson {
                             listF.remove(listF.get(dValg).getKontakt3());
                     }
                 }
+                System.out.println(listF);
                 FileHandler.loadFamilieToDisk(listF);
 
 
@@ -245,6 +238,12 @@ public class Kontaktperson {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    public String toString() {
+        return "Navn: " + fornavn+" "+efternavn+"\nTelefonnummer: "+telefon+"\nEmail: "+email;
+    }
+    public String toFile() {
+        return fornavn + "/n" + efternavn + "/" + telefon + "/n" + email;
     }
 
 }

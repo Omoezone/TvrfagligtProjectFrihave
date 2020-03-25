@@ -15,20 +15,18 @@ public class InputHelper {
         Scanner scan = new Scanner(System.in);
         int retNumber;
         boolean isNotValid = false;
-
         do{
             if(isNotValid){
-                System.out.printf("The number must be between %d and %d%n", minInt, maxInt);
+                System.out.printf("Indtastet tal skal være mellem %d og %d%n", minInt, maxInt);
             }
             while(!scan.hasNextInt()){
-                System.out.printf("That is not a number! Please try again.%n");
+                System.out.printf("Input var ikke et tal! Prøv venligst igen.%n");
                 scan.next();
             }
             // hasNextInt() true, reading number from console
             retNumber = scan.nextInt();
             isNotValid = retNumber < minInt || retNumber > maxInt;
         }while(isNotValid);
-
         return retNumber;
     }
 

@@ -48,21 +48,18 @@ public class Barn {
     }
 
     public static Barn opretNytBarn(ArrayList<Barn> listB){
-        String fornavn;
-        String efternavn;
-        String cprnummer;
         Scanner input = new Scanner(System.in);
 
         System.out.print("Venligst indtast barnets fulde navn (Fornavn + Efternavn): ");
-        fornavn = input.nextLine();
-        efternavn = fornavn.substring(fornavn.lastIndexOf(" ")+1);
+        String fornavn = input.nextLine();
+        String efternavn = fornavn.substring(fornavn.lastIndexOf(" ")+1);
         fornavn = fornavn.substring(0, fornavn.lastIndexOf(" "));
 
         System.out.println("Hvad er barnets CPR nummer? Skriv uden mellemrum eller tegn");
-        cprnummer = input.next();
+        String cprnummer = input.next();
         Barn barn = new Barn(fornavn, efternavn, cprnummer, listB);
         System.out.println("Oprettet barn: \n" + barn.toString());
-            return barn;
+        return barn;
     }
 
     public static void redigerBarn(Barn b, ArrayList<Familie> listF, ArrayList<Barn> listB, ArrayList<Kontaktperson> listKP, ArrayList<Medarbejder> listM, int[] index) throws FileNotFoundException {

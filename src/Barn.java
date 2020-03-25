@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -63,7 +64,7 @@ public class Barn {
             return barn;
     }
 
-    public static void redigerBarn(Barn b, ArrayList<Familie> listF, int[] index){
+    public static void redigerBarn(Barn b, ArrayList<Familie> listF, ArrayList<Barn> listB, ArrayList<Kontaktperson> listKP, ArrayList<Medarbejder> listM, int[] index) throws IOException {
         System.out.println("Hvad vil du ændre? \n1. Fornavn\n2. Efternavn\n3. CPR nummer\n\n0. Tilbage til hovedmenuen");
         Scanner input = new Scanner(System.in);
 
@@ -79,7 +80,7 @@ public class Barn {
                 System.out.println("Fornavn sat til: " + b.getFornavn() + "\n\nVil du ændre andet? 1. Ja\n0. Nej");
                 int redigerMere = input.nextInt();
                 if(redigerMere == 1){
-                    redigerBarn(b,listF, index);
+                    redigerBarn(b,listF, listB, listKP,listM, index);
                 }
                 break;
 
@@ -90,7 +91,7 @@ public class Barn {
                 System.out.println("Efternavn sat til: " + b.getEfternavn() + "\n\nVil du ændre andet? 1. Ja\n0. Nej");
                 redigerMere = input.nextInt();
                 if(redigerMere == 1){
-                    redigerBarn(b, listF, index);
+                    redigerBarn(b,listF, listB, listKP,listM, index);
                 }
                 break;
 
@@ -101,13 +102,14 @@ public class Barn {
                 System.out.println("CPR nummer er sat til: " + b.getCprnummer() + "\n\nVil du ændre andet? 1. Ja\n0. Nej");
                 redigerMere = input.nextInt();
                 if(redigerMere == 1){
-                    redigerBarn(b, listF, index);
+                    redigerBarn(b,listF, listB, listKP,listM, index);
                 }
                 break;
-
+            case 4:
+                Menu.menuSelection(listF, listB, listKP, listM);
             default:
                 System.out.println("Input var ikke en mulig selektion.");
-                redigerBarn(b, listF, index);
+                redigerBarn(b,listF, listB, listKP,listM, index);
         }
         listF.get(index[0]).setBarn(b);
     }

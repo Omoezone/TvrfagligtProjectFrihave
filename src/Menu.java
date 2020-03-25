@@ -1,10 +1,11 @@
 import java.io.FileNotFoundException;
 //import java.sql.SQLOutput;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
-    public static void menuSelection(ArrayList<Familie> listF, ArrayList<Barn> listB, ArrayList<Kontaktperson> listKP, ArrayList<Medarbejder> listM)throws FileNotFoundException {
+    public static void menuSelection(ArrayList<Familie> listF, ArrayList<Barn> listB, ArrayList<Kontaktperson> listKP, ArrayList<Medarbejder> listM)throws IOException {
         boolean menuFlag = true;
         while (menuFlag) {
             System.out.println("Hvad ønsker du at gøre?\n1. Børn\n2. Vagtplan\n" +
@@ -12,7 +13,7 @@ public class Menu {
                                "5. Kontaktpersoners oplysninger \n6. Afslutte programmet");
             switch(InputHelper.getOptionFromUser(1,6)) {
                 case 1:
-                    indskrivData(listB, listF, listKP);
+                    indskrivData(listB, listF, listKP,listM);
                     break;
                 case 2:
                     //TODO opretVagtplan();
@@ -49,15 +50,15 @@ public class Menu {
         }
     }
 
-    public static void indskrivData(ArrayList<Barn> listB, ArrayList<Familie> listF, ArrayList<Kontaktperson> listKP)throws FileNotFoundException {
+    public static void indskrivData(ArrayList<Barn> listB, ArrayList<Familie> listF, ArrayList<Kontaktperson> listKP,ArrayList<Medarbejder> listM)throws IOException {
         System.out.println("Hvilken data ønsker du at behandle?\n1. Rediger barn\n2. Tilføj barn\n3. Slet barn\n" +
-                           "4. Se liste over børn");
+                           "4. Se liste over børn \n5. Gå tilbage til menu");
         switch(InputHelper.getOptionFromUser(1,5)) {
             case 1:
                 System.out.println("Hvilket barn ønsker du at redigere?");
                 //TODO print liste over børn til at redigere
                 int[] index = new int[1];
-                Barn.redigerBarn(Barn.selectBarn(listB, index), listF, index);
+                Barn.redigerBarn(Barn.selectBarn(listB,index),listF, listB, listKP,listM, index);
                 break;
             case 2:
                 Familie.opretFamilie(listB, listF, listKP);
@@ -70,9 +71,12 @@ public class Menu {
                 //TODO printBarnListe();
                 Barn.printBarnListe(listB);
                 break;
+            case 5:
+                menuSelection(listF, listB, listKP, listM);
+                break;
             default:
                 System.out.println("Input var ikke en mulig selektion.");
-                indskrivData(listB, listF, listKP);
+                indskrivData(listB, listF, listKP,listM);
         }
     }
 

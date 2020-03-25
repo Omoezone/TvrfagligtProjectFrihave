@@ -14,6 +14,7 @@ public class Main {
         //ArrayList<Barn> listB = FileHandler.loadBarnFromDisk();
         //ArrayList<Kontaktperson> listKP = FileHandler.loadKontaktPersonFromDisk();
         //Medarbejder.menuMedarbejderVagtplan(listM);
+        System.out.println("Velkommen til Roskilde Frie Børnehave\n");
         Menu.menuSelection(listF, listB, listKP, listM);
     }
 }
